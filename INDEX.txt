@@ -1,0 +1,275 @@
+                    AUGUSTUS WILLIAMS MICROSITE
+                    ==========================
+                    
+A cinematic, underground-aesthetic website for Detroit techno artist Augustus Williams.
+
+PROJECT FILES
+=============
+
+📄 index.html           Main website HTML
+                        - Hero section with portrait
+                        - Biography & format info  
+                        - Press archive (4 items)
+                        - Session index (4 sessions)
+                        - Contact/booking channels
+                        - Footer
+
+🎨 styles.css           All typography, layout, colors
+                        - Dark aesthetic (#0a0a0a background)
+                        - Cream typography (#f5f1eb)
+                        - Red accent system (#d32f2f)
+                        - Responsive breakpoints
+                        - Subtle animations
+
+⚡ script.js            Client-side interactions
+                        - Smooth scroll navigation
+                        - Scroll-based animations
+                        - Parallax image effect
+                        - Active nav state
+                        - Hover effects
+
+📁 assets/              Image directory
+                        - Place hero.jpg here (3:4 aspect)
+                        - Keep images optimized <200KB
+
+📚 README.md            Comprehensive documentation
+                        - Design philosophy
+                        - Customization guide
+                        - Performance notes
+                        - Deployment options
+                        - Accessibility checklist
+
+⚙️ QUICKSTART.md         Fast setup guide
+                        - Local testing commands
+                        - Content editing (no code!)
+                        - Image setup
+                        - Deployment to Vercel/Netlify
+                        - Troubleshooting
+
+🔧 SNIPPETS.md          Copy-paste customization code
+                        - Add press items
+                        - Add sessions
+                        - Change colors/fonts
+                        - Add contact form
+                        - Advanced techniques
+
+
+QUICK START
+===========
+
+1. TEST LOCALLY
+   cd augustuswilliamsmusic-site
+   python -m http.server 8000
+   → Open http://localhost:8000
+
+2. EDIT CONTENT
+   Open index.html in any text editor
+   Update email, links, session names
+   No coding required!
+
+3. ADD IMAGE
+   Export 3:4 portrait from EPK
+   Optimize with TinyPNG.com
+   Save as assets/hero.jpg
+
+4. DEPLOY
+   Choose: Vercel, Netlify, or GitHub Pages
+   Push code, add custom domain
+   DNS setup (24-48 hours)
+
+
+KEY FEATURES
+============
+
+✓ Boutique underground aesthetic (not DJ promo)
+✓ Black background + cream text + red accents
+✓ Responsive mobile-first design
+✓ No frameworks, no bloat
+✓ Smooth animations and transitions
+✓ Section links in fixed navigation
+✓ Parallax image effect
+✓ Hover effects on cards
+✓ Staggered load animations
+✓ Accessibility ready
+✓ <40KB total size (without images)
+
+
+AESTHETIC PRINCIPLES
+====================
+
+Design Goal: "Boutique underground performance archive, 
+not a DJ promo website"
+
+✓ Berlin gallery minimalism
+✓ Asymmetrical editorial layout
+✓ Large negative space
+✓ Monospaced editorial typography
+✓ Atmospheric black and white imagery
+✓ Underground techno archive energy
+✓ No corporate startup UI
+✓ No template feeling
+
+
+FILE CUSTOMIZATION
+==================
+
+Email:
+  Find: booking@augustuswilliamsmusic.com
+  Replace with your actual email
+
+Social Links:
+  In Contact section, update href="#" with real URLs
+  Examples provided in SNIPPETS.md
+
+Sessions:
+  Edit session titles, dates, descriptions
+  Add real links to Bandcamp/SoundCloud
+
+Press:
+  Update with actual press mentions and dates
+
+Colors:
+  Edit CSS variables in :root (styles.css)
+  Change --accent for different color scheme
+
+Fonts:
+  System fonts by default (fast loading)
+  SNIPPETS.md has web font examples
+
+
+HOSTING OPTIONS
+===============
+
+Free Tier Services:
+  • Vercel (recommended) - Fast, simple deploys
+  • Netlify - Easy domain setup
+  • GitHub Pages - Free with GitHub account
+
+Setup Process:
+  1. Push code to GitHub
+  2. Connect to hosting service
+  3. Add custom domain
+  4. Update DNS at registrar
+  5. Live in minutes!
+
+More details in README.md "Hosting Recommendations"
+
+
+PERFORMANCE
+===========
+
+HTML + CSS + JS: ~33 KB (uncompressed)
+With optimized hero image: ~200 KB total
+
+This is excellent web performance.
+
+Optimization tips:
+  • Compress images to <200KB
+  • Use WebP format if possible
+  • Test with PageSpeed Insights
+  • Monitor Core Web Vitals
+
+
+NEXT STEPS
+==========
+
+1. Read QUICKSTART.md for detailed setup
+2. Edit index.html with your content
+3. Add hero.jpg to assets/
+4. Test locally with python -m http.server
+5. Deploy to Vercel/Netlify
+6. Point domain DNS
+7. Monitor with Google PageSpeed
+
+For questions, see README.md or SNIPPETS.md
+
+
+SUPPORT RESOURCES
+=================
+
+Documentation:
+  📖 README.md - Full reference guide
+  ⚙️ QUICKSTART.md - Setup & deployment
+  🔧 SNIPPETS.md - Copy-paste code examples
+
+Tools:
+  🖼️ Image optimization: TinyPNG.com, ImageOptim
+  📊 Performance: PageSpeed Insights, GTmetrix
+  🌐 Form handling: Formspree.io
+
+Deployment:
+  🚀 Vercel: vercel.com
+  🌐 Netlify: netlify.com
+  🐙 GitHub Pages: pages.github.com
+
+
+TECHNICAL DETAILS
+=================
+
+Architecture:
+  • Static HTML/CSS/JS (no backend needed)
+  • Semantic HTML5 structure
+  • CSS custom properties for theming
+  • Vanilla JavaScript (no dependencies)
+
+Browser Support:
+  • Chrome, Safari, Firefox, Edge
+  • iOS 12+, Android 8+
+  • No IE11 support
+
+Accessibility:
+  ✓ WCAG AA color contrast
+  ✓ Keyboard navigation
+  ✓ Prefers-reduced-motion support
+  ✓ Semantic HTML
+  ✓ ARIA-friendly structure
+
+
+DESIGN DECISIONS
+================
+
+Why no web fonts?
+  → Faster loading, works offline, zero layout shift
+
+Why minimal JavaScript?
+  → Better performance, no framework overhead
+
+Why monospaced headers?
+  → Editorial aesthetic, underground archive feel
+
+Why red accents on black?
+  → High contrast, iconic in techno design, visual hierarchy
+
+Why single page?
+  → Everything about Augustus in one experience
+  → No page load friction
+  → Better for music artist portfolio
+
+
+FINAL CHECKLIST
+===============
+
+Before going live:
+  ☐ Update all text content
+  ☐ Add hero.jpg image
+  ☐ Replace booking email
+  ☐ Update social links
+  ☐ Test on mobile
+  ☐ Check all links work
+  ☐ Optimize images
+  ☐ Test in multiple browsers
+  ☐ Deploy to hosting
+  ☐ Set up DNS
+  ☐ Monitor performance
+
+
+═════════════════════════════════════════════════════
+
+Built with the underground aesthetic of Detroit 
+techno in mind. No frameworks. No bloat. Just pure, 
+performant web design.
+
+For Augustus Williams Music
+Detroit, MI — 2026
+
+═════════════════════════════════════════════════════
