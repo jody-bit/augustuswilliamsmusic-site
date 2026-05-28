@@ -1,14 +1,16 @@
+/* styles.css */
+
 :root {
     --bg: #0a0a0a;
     --fg: #f5f1eb;
     --accent: #d32f2f;
-    --signal-red: #8B2E2E;
+    --signal-red: #8b2e2e;
     --gray-dark: #1a1a1a;
     --gray-mid: #333333;
     --gray-light: #888888;
 
-    --font-mono: 'Courier New', 'IBM Plex Mono', monospace;
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: "Courier New", "IBM Plex Mono", monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -96,7 +98,8 @@ p {
     border: none;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
     color: var(--accent);
 }
 
@@ -113,11 +116,26 @@ p {
     margin-right: auto;
 }
 
+.hero-content {
+    width: 100%;
+}
+
+.hero--inner {
+    min-height: clamp(320px, 46vh, 520px);
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+}
+
 .hero-title {
     font-size: clamp(3rem, 7vw, 5rem);
     line-height: 0.9;
     letter-spacing: -0.04em;
     margin-bottom: var(--spacing-lg);
+}
+
+.hero--inner .hero-title {
+    margin-bottom: var(--spacing-md);
 }
 
 .hero-name,
@@ -154,8 +172,17 @@ p {
     line-height: 1.8;
 }
 
+.hero--inner .hero-copy {
+    max-width: 640px;
+    margin-top: var(--spacing-md);
+}
+
 .hero-cta {
     margin-top: var(--spacing-md);
+}
+
+.hero--inner .hero-cta {
+    margin-top: var(--spacing-sm);
 }
 
 .signal-button {
@@ -238,7 +265,8 @@ section:not(.hero) {
 }
 
 .meta-block h3,
-.contact-channel h3 {
+.contact-channel h3,
+.releases-subtitle {
     font-family: var(--font-mono);
     color: var(--accent);
     text-transform: uppercase;
@@ -258,7 +286,8 @@ section:not(.hero) {
 .release-feature-card,
 .session-card,
 .signal-card,
-.contact-channel {
+.contact-channel,
+.release-item {
     border: 1px solid var(--gray-mid);
     padding: var(--spacing-lg);
     transition: var(--transition);
@@ -271,9 +300,31 @@ section:not(.hero) {
     margin-top: var(--spacing-lg);
 }
 
+.releases-group {
+    margin-top: var(--spacing-xl);
+}
+
+.releases-list {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.release-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+}
+
+.release-info h4 {
+    margin-bottom: var(--spacing-xs);
+}
+
 .release-meta,
+.release-platform,
 .session-date,
 .session-format {
+    display: block;
     font-family: var(--font-mono);
     color: var(--accent);
     text-transform: uppercase;
@@ -297,6 +348,7 @@ section:not(.hero) {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.875rem;
+    white-space: nowrap;
 }
 
 .archive-portal {
@@ -322,7 +374,9 @@ section:not(.hero) {
 
 .session-card:hover,
 .signal-card:hover,
-.contact-channel:hover {
+.contact-channel:hover,
+.release-feature-card:hover,
+.release-item:hover {
     border-color: var(--accent);
 }
 
@@ -373,8 +427,19 @@ section:not(.hero) {
         gap: var(--spacing-lg);
     }
 
+    .hero--inner {
+        min-height: auto;
+        gap: var(--spacing-md);
+        padding-top: var(--spacing-sm);
+        padding-bottom: var(--spacing-md);
+    }
+
     .hero-image {
         aspect-ratio: 1 / 1;
+    }
+
+    .release-item {
+        flex-direction: column;
     }
 }
 
@@ -385,6 +450,8 @@ section:not(.hero) {
 
     .nav-links {
         gap: var(--spacing-sm);
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
     .nav-links a {
@@ -397,14 +464,16 @@ section:not(.hero) {
         grid-template-columns: 1fr;
     }
 
-    .release-feature-card {
+    .release-feature-card,
+    .release-item {
         flex-direction: column;
     }
 
     .release-feature-card,
     .session-card,
     .signal-card,
-    .contact-channel {
+    .contact-channel,
+    .release-item {
         padding: var(--spacing-md);
     }
 }
@@ -415,8 +484,23 @@ section:not(.hero) {
         padding: var(--spacing-lg) var(--spacing-md);
     }
 
+    .hero--inner {
+        min-height: auto;
+        gap: var(--spacing-sm);
+        padding-top: 0.5rem;
+        padding-bottom: var(--spacing-sm);
+    }
+
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero--inner .hero-title {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .hero--inner .hero-copy {
+        margin-top: var(--spacing-sm);
     }
 
     .nav-logo {

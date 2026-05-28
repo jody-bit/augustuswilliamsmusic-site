@@ -1,180 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Augustus Williams — Releases</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#000000">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+
+    <style>
+        .releases-page {
+            background: var(--bg);
+        }
+
+        .releases-page .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.96);
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
+            backdrop-filter: blur(10px);
+        }
+
+        .releases-page .site-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .releases-page .site-nav-brand {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--fg);
+            border-bottom: none;
+        }
+
+        .releases-page .site-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.5rem;
+            list-style: none;
+        }
+
+        .releases-page .site-nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray-light);
+            border-bottom: none;
+        }
+
+        .releases-page .site-nav-links a:hover,
+        .releases-page .site-nav-links a[aria-current="page"] {
+            color: var(--accent);
+        }
+
+        .releases-page .site-nav-links .nav-cta {
+            color: var(--fg);
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--signal-red);
+            background: rgba(139, 46, 46, 0.12);
+        }
+
+        .releases-page .site-nav-links .nav-cta:hover {
+            color: var(--fg);
+            background: var(--signal-red);
+        }
+
+        .releases-page .releases-banner {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: clamp(140px, 18vh, 220px);
+            overflow: hidden;
+            background: #000;
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
+        }
+
+        .releases-page .releases-banner img {
+            width: 100%;
+            height: 100%;
+            min-height: clamp(140px, 18vh, 220px);
+            display: block;
+            object-fit: cover;
+            object-position: center 52%;
+            opacity: 0.78;
+        }
+
+        .releases-page .releases-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.66) 34%, rgba(0, 0, 0, 0.24) 66%, rgba(0, 0, 0, 0.3) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.38) 100%);
+            pointer-events: none;
+        }
+
+        .releases-page .releases-banner-content {
+            position: absolute;
+            left: clamp(1rem, 3vw, 2.25rem);
+            right: clamp(1rem, 3vw, 2.25rem);
+            bottom: clamp(0.9rem, 2vw, 1.4rem);
+            z-index: 2;
+            max-width: 32rem;
+        }
+
+        .releases-page .releases-kicker {
+            margin: 0 0 0.35rem;
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.72rem;
+        }
+
+        .releases-page .releases-heading {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: var(--fg);
+        }
+
+        .releases-page .releases-heading span {
+            color: var(--accent);
+        }
+
+        .releases-page .releases-copy {
+            max-width: 30rem;
+            margin: 0;
+            color: rgba(245, 241, 235, 0.88);
+            line-height: 1.45;
+            font-size: 0.9rem;
+        }
+
+        .releases-page .releases-banner-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .releases-page .banner-signal {
+            display: inline-block;
+            padding: 0.65rem 0.9rem;
+            border: 1px solid var(--signal-red);
+            background: rgba(139, 46, 46, 0.12);
+            color: var(--fg);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .releases-page .banner-signal:hover {
+            background: var(--signal-red);
+            color: var(--fg);
+            border-bottom-color: transparent;
+        }
+
+        .releases-page .banner-scroll {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: none;
+        }
+
+        .releases-page .banner-scroll:hover {
+            color: var(--accent);
+        }
+
+        .releases-page .releases-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+        }
+
+        .releases-page .releases-group {
+            margin-top: var(--spacing-xl);
+        }
+
+        .releases-page .releases-list {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .releases-page .releases-subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .releases-page .release-feature-card,
+        .releases-page .release-item {
+            border: 1px solid var(--gray-mid);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .releases-page .release-feature-card {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+        }
+
+        .releases-page .release-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--spacing-lg);
+        }
+
+        .releases-page .release-feature-card:hover,
+        .releases-page .release-item:hover {
+            border-color: var(--accent);
+        }
+
+        .releases-page .release-info h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .releases-page .release-meta,
+        .releases-page .release-platform {
+            display: block;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+        }
+
+        .releases-page .release-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .releases-page .release-link {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+            .releases-page .site-nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .releases-page .releases-banner,
+            .releases-page .releases-banner img {
+                min-height: 170px;
+            }
+
+            .releases-page .releases-banner::after {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.78) 100%);
+            }
+
+            .releases-page .releases-banner-content {
+                max-width: none;
+            }
+
+            .releases-page .release-feature-card,
+            .releases-page .release-item {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .releases-page .site-nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .releases-page .site-nav-links .nav-cta {
+                padding: 0.65rem 0.85rem;
+            }
+
+            .releases-page .releases-banner,
+            .releases-page .releases-banner img {
+                min-height: 190px;
+            }
+
+            .releases-page .releases-heading {
+                font-size: clamp(1.35rem, 7vw, 2rem);
+            }
+
+            .releases-page .releases-copy {
+                font-size: 0.88rem;
+                max-width: 24rem;
+            }
+
+            .releases-page .releases-banner-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .releases-page .release-feature-card,
+            .releases-page .release-item {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo"><a href="index.html">GUSTO</a></div>
-            <ul class="nav-links">
-                <li><a href="index.html#about">about</a></li>
-                <li><a href="index.html#sessions">sessions</a></li>
-                <li><a href="releases.html">releases</a></li>
-                <li><a href="index.html#signals">signals</a></li>
-                <li><a href="index.html#archive">press</a></li>
-                <li><a href="index.html#contact">contact</a></li>
+<body class="releases-page">
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav-inner">
+            <a href="index.html" class="site-nav-brand">Augustus Williams</a>
+
+            <ul class="site-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="releases.html" aria-current="page">Releases</a></li>
+                <li>
+                    <a
+                        href="https://augustus-williams.kit.com/8597e8cab7"
+                        class="nav-cta"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Join the Signal
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Releases Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="hero-name">RELEASES</span>
-            </h1>
-            <p class="hero-copy">Selected catalog entries, remixes, and label archives.</p>
-        </div>
-    </section>
+    <main>
+        <section class="releases-banner">
+            <img src="assets/releases-hero-banner-cropped-half-overlay.jpg" alt="Augustus Williams performing live in front of a crowd" />
 
-    <!-- Releases Archive -->
-    <section id="releases" class="releases">
-        <div class="release-feature-card">
-            <div>
-                <h3>INCREASER EP</h3>
-                <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
-                <p>Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.</p>
-            </div>
-            <div class="release-actions">
-                <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link">LISTEN ON BANDCAMP →</a>
-            </div>
-        </div>
+            <div class="releases-banner-content">
+                <p class="releases-kicker">Releases / Selected Catalog / Label Archive</p>
 
-        <div class="releases-group">
-            <h3 class="releases-subtitle">METROPLEX RECORDS</h3>
-            <div class="releases-list">
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>INCREASER EP</h4>
-                        <span class="release-platform">Metroplex Records · Bandcamp · 2023</span>
-                    </div>
-                    <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link">LISTEN ON BANDCAMP →</a>
+                <h1 class="releases-heading">
+                    Augustus Williams <span>(Gusto)</span>
+                </h1>
+
+                <p class="releases-copy">
+                    Selected catalog entries, remixes, and label archives.
+                </p>
+
+                <div class="releases-banner-actions">
+                    <a
+                        href="https://augustus-williams.kit.com/8597e8cab7"
+                        class="banner-signal"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Join the Detroit Techno Signal
+                    </a>
+
+                    <a href="#releases" class="banner-scroll">Browse releases ↓</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="releases-group">
-            <h3 class="releases-subtitle">THISIS</h3>
-            <div class="releases-list">
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Outside Systems of Human Presumption</h4>
-                        <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
-                    </div>
-                    <a href="https://thisislabel.bandcamp.com/album/outside-systems-of-human-presumption" class="release-link">LISTEN ON BANDCAMP →</a>
+        <section id="releases" class="releases-section">
+            <div id="featured" class="release-feature-card">
+                <div>
+                    <h3>INCREASER EP</h3>
+                    <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
+                    <p>Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.</p>
                 </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Get Yours</h4>
-                        <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
-                    </div>
-                    <a href="https://thisislabel.bandcamp.com/album/get-yours" class="release-link">LISTEN ON BANDCAMP →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Sammy the Automated Sharebroker</h4>
-                        <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
-                    </div>
-                    <a href="https://thisislabel.bandcamp.com/album/sammy-the-automated-sharebroker-2" class="release-link">LISTEN ON BANDCAMP →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Sammy the Automated Sharebroker, Augustus Williams Remix</h4>
-                        <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
-                    </div>
-                    <a href="https://thisislabel.bandcamp.com/track/sammy-the-automated-sharebroker-augustus-willams-remix" class="release-link">LISTEN ON BANDCAMP →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Kero — TCKR Concept, Augustus Williams Remix</h4>
-                        <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
-                    </div>
-                    <a href="https://thisislabel.bandcamp.com/track/tckr-concept-augustus-williams-remix" class="release-link">LISTEN ON BANDCAMP →</a>
+
+                <div class="release-actions">
+                    <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link" target="_blank" rel="noreferrer noopener">
+                        LISTEN ON BANDCAMP →
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="releases-group">
-            <h3 class="releases-subtitle">BEATPORT ARCHIVE</h3>
-            <div class="releases-list">
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Psychosis</h4>
-                        <span class="release-platform">Beatport Archive · Release · Year TBA</span>
+            <div id="metroplex" class="releases-group">
+                <h3 class="releases-subtitle">METROPLEX RECORDS</h3>
+                <div class="releases-list">
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>INCREASER EP</h4>
+                            <span class="release-platform">Metroplex Records · Bandcamp · 2023</span>
+                        </div>
+                        <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
                     </div>
-                    <a href="https://www.beatport.com/release/psychosis/230810" class="release-link">VIEW RELEASE →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Jack Your Body</h4>
-                        <span class="release-platform">Beatport Archive · Release · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/release/jack-your-body/1081951" class="release-link">VIEW RELEASE →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Sample Sessions</h4>
-                        <span class="release-platform">Beatport Archive · Track · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/track/sample-sessions/5162207" class="release-link">VIEW TRACK →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Invalid Memory</h4>
-                        <span class="release-platform">Beatport Archive · Track · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/track/invalid-memory/5072484" class="release-link">VIEW TRACK →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Psychological T.</h4>
-                        <span class="release-platform">Beatport Archive · Track · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/track/psychological-terror/5141100" class="release-link">VIEW TRACK →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Black Wolf</h4>
-                        <span class="release-platform">Beatport Archive · Track · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/track/black-wolf/1145940" class="release-link">VIEW TRACK →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>Nite Train</h4>
-                        <span class="release-platform">Beatport Archive · Track · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/track/nite-train/1462486" class="release-link">VIEW TRACK →</a>
-                </div>
-                <div class="release-item">
-                    <div class="release-info">
-                        <h4>GND</h4>
-                        <span class="release-platform">Beatport Artist Archive · Artist Page · Year TBA</span>
-                    </div>
-                    <a href="https://www.beatport.com/artist/gnd/342854" class="release-link">VIEW ARCHIVE →</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
+            <div id="thisis" class="releases-group">
+                <h3 class="releases-subtitle">THISIS</h3>
+                <div class="releases-list">
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Outside Systems of Human Presumption</h4>
+                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                        </div>
+                        <a href="https://thisislabel.bandcamp.com/album/outside-systems-of-human-presumption" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Get Yours</h4>
+                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                        </div>
+                        <a href="https://thisislabel.bandcamp.com/album/get-yours" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Sammy the Automated Sharebroker</h4>
+                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                        </div>
+                        <a href="https://thisislabel.bandcamp.com/album/sammy-the-automated-sharebroker-2" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Sammy the Automated Sharebroker, Augustus Williams Remix</h4>
+                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                        </div>
+                        <a href="https://thisislabel.bandcamp.com/track/sammy-the-automated-sharebroker-augustus-willams-remix" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Kero — TCKR Concept, Augustus Williams Remix</h4>
+                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                        </div>
+                        <a href="https://thisislabel.bandcamp.com/track/tckr-concept-augustus-williams-remix" class="release-link" target="_blank" rel="noreferrer noopener">
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="beatport" class="releases-group">
+                <h3 class="releases-subtitle">BEATPORT ARCHIVE</h3>
+                <div class="releases-list">
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Psychosis</h4>
+                            <span class="release-platform">Beatport Archive · Release · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/release/psychosis/230810" class="release-link" target="_blank" rel="noreferrer noopener">VIEW RELEASE →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Jack Your Body</h4>
+                            <span class="release-platform">Beatport Archive · Release · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/release/jack-your-body/1081951" class="release-link" target="_blank" rel="noreferrer noopener">VIEW RELEASE →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Sample Sessions</h4>
+                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/track/sample-sessions/5162207" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Invalid Memory</h4>
+                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/track/invalid-memory/5072484" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Psychological Terror</h4>
+                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/track/psychological-terror/5141100" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Black Wolf</h4>
+                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/track/black-wolf/1145940" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>Nite Train</h4>
+                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/track/nite-train/1462486" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
+                    </div>
+
+                    <div class="release-item">
+                        <div class="release-info">
+                            <h4>GND</h4>
+                            <span class="release-platform">Beatport Artist Archive · Artist Page · Year TBA</span>
+                        </div>
+                        <a href="https://www.beatport.com/artist/gnd/342854" class="release-link" target="_blank" rel="noreferrer noopener">VIEW ARCHIVE →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="footer">
         <div class="footer-content">
             <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
             <p class="footer-text">© 2026. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
