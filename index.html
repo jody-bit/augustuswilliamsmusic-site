@@ -1,587 +1,310 @@
-/* styles.css */
-
-:root {
-    --bg: #0a0a0a;
-    --fg: #f5f1eb;
-    --accent: #d32f2f;
-    --signal-red: #8b2e2e;
-    --gray-dark: #1a1a1a;
-    --gray-mid: #333333;
-    --gray-light: #888888;
-
-    --font-mono: "Courier New", "IBM Plex Mono", monospace;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
-    --spacing-xl: 6rem;
-
-    --transition: all 0.35s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-a {
-    color: var(--fg);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: var(--transition);
-}
-
-a:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-p {
-    margin-bottom: var(--spacing-md);
-}
-
-.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(10, 10, 10, 0.95);
-    border-bottom: 1px solid var(--gray-dark);
-    z-index: 1000;
-    padding: var(--spacing-sm) 0;
-}
-
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: var(--spacing-lg);
-}
-
-.nav-links a {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--gray-light);
-    border: none;
-}
-
-.nav-links a:hover,
-.nav-links a[aria-current="page"] {
-    color: var(--accent);
-}
-
-.hero {
-    margin-top: 60px;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: var(--spacing-xl);
-    padding: var(--spacing-xl) var(--spacing-lg);
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.hero--inner {
-    min-height: clamp(320px, 46vh, 520px);
-    gap: var(--spacing-lg);
-    padding-top: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-}
-
-.hero-title {
-    font-size: clamp(3rem, 7vw, 5rem);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    margin-bottom: var(--spacing-lg);
-}
-
-.hero--inner .hero-title {
-    margin-bottom: var(--spacing-md);
-}
-
-.hero-name,
-.hero-alias {
-    display: block;
-}
-
-.hero-alias {
-    color: var(--accent);
-    margin-top: var(--spacing-sm);
-}
-
-.hero-subtitle {
-    font-family: var(--font-mono);
-    color: var(--gray-light);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: var(--spacing-md);
-}
-
-.hero-location {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.875rem;
-}
-
-.hero-copy,
-.section-copy {
-    color: var(--gray-light);
-    max-width: 780px;
-    margin-top: var(--spacing-lg);
-    line-height: 1.8;
-}
-
-.hero--inner .hero-copy {
-    max-width: 640px;
-    margin-top: var(--spacing-md);
-}
-
-.hero-cta {
-    margin-top: var(--spacing-md);
-}
-
-.hero--inner .hero-cta {
-    margin-top: var(--spacing-sm);
-}
-
-.signal-button {
-    display: inline-block;
-    width: fit-content;
-    padding: 0.85rem 1.5rem;
-    border: 1px solid var(--signal-red);
-    color: var(--fg);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    background: rgba(139, 46, 46, 0.12);
-}
-
-.signal-button:hover {
-    background: var(--signal-red);
-    color: var(--fg);
-    border-bottom-color: transparent;
-}
-
-.hero-image {
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border: 1px solid var(--gray-dark);
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.88;
-    transition: var(--transition);
-}
-
-.hero-image:hover img {
-    opacity: 1;
-    transform: scale(1.02);
-}
-
-section:not(.hero) {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: clamp(5rem, 9vw, 9rem) clamp(1.5rem, 4vw, 3rem);
-    border-top: 1px solid rgba(245, 241, 235, 0.12);
-}
-
-.section-title {
-    font-family: var(--font-mono);
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
-    line-height: 0.95;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-}
-
-.about {
-    background: var(--gray-dark);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--spacing-xl);
-}
-
-.about-text p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-}
-
-.meta-block {
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--gray-mid);
-}
-
-.meta-block:last-child {
-    border-bottom: none;
-}
-
-.meta-block h3,
-.contact-channel h3,
-.releases-subtitle {
-    font-family: var(--font-mono);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.875rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.meta-block ul {
-    list-style: none;
-}
-
-.meta-block li {
-    margin-bottom: var(--spacing-xs);
-}
-
-.metroplex-logo {
-    display: block;
-    width: 100%;
-    max-width: 260px;
-    height: auto;
-    opacity: 0.96;
-    transition: var(--transition);
-}
-
-.metroplex-logo:hover {
-    opacity: 1;
-    transform: scale(1.025);
-}
-
-.release-logo-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.release-copy-block {
-    min-width: 0;
-}
-
-.releases-brand-lockup {
-    margin: var(--spacing-lg) 0 var(--spacing-md);
-}
-
-.releases-metroplex-logo {
-    max-width: 320px;
-}
-
-.release-feature-card,
-.session-card,
-.signal-card,
-.contact-channel,
-.release-item {
-    border: 1px solid var(--gray-mid);
-    padding: var(--spacing-lg);
-    transition: var(--transition);
-}
-
-.release-feature-card {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-}
-
-.metroplex-release-card {
-    display: grid;
-    grid-template-columns: minmax(180px, 280px) 1fr;
-    gap: var(--spacing-lg);
-    align-items: center;
-}
-
-.releases-group {
-    margin-top: var(--spacing-xl);
-}
-
-.releases-list {
-    display: grid;
-    gap: var(--spacing-md);
-}
-
-.release-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--spacing-lg);
-}
-
-.release-info h4,
-.release-copy-block h3 {
-    margin-bottom: var(--spacing-xs);
-}
-
-.release-meta,
-.release-platform,
-.session-date,
-.session-format {
-    display: block;
-    font-family: var(--font-mono);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.8rem;
-}
-
-.release-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-}
-
-.release-link,
-.archive-link,
-.session-link,
-.signal-link {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    font-family: var(--font-mono);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.875rem;
-    white-space: nowrap;
-    border-bottom: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.release-link:hover,
-.archive-link:hover,
-.session-link:hover,
-.signal-link:hover {
-    color: var(--fg);
-    border-bottom-color: var(--accent);
-    transform: translateX(0.35rem);
-}
-
-.archive-portal {
-    margin-top: var(--spacing-xl);
-}
-
-.sessions {
-    background: var(--gray-dark);
-}
-
-.sessions-grid,
-.signals-grid,
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
-}
-
-.session-card {
-    background: var(--bg);
-}
-
-.session-card:hover,
-.signal-card:hover,
-.contact-channel:hover,
-.release-feature-card:hover,
-.release-item:hover {
-    border-color: var(--accent);
-}
-
-.session-header {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
-    margin-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--gray-mid);
-}
-
-.session-card p,
-.signal-card p {
-    color: var(--gray-light);
-}
-
-.contact-link {
-    display: block;
-    margin-bottom: var(--spacing-sm);
-    word-break: break-word;
-}
-
-.footer {
-    padding: var(--spacing-lg);
-    border-top: 1px solid var(--gray-mid);
-    text-align: center;
-}
-
-.footer-text {
-    font-family: var(--font-mono);
-    color: var(--gray-light);
-    font-size: 0.875rem;
-}
-
-.footer-text .accent {
-    color: var(--accent);
-}
-
-@media (max-width: 1024px) {
-    .hero,
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        padding: var(--spacing-lg) var(--spacing-md);
-        gap: var(--spacing-lg);
-    }
-
-    .hero--inner {
-        min-height: auto;
-        gap: var(--spacing-md);
-        padding-top: var(--spacing-sm);
-        padding-bottom: var(--spacing-md);
-    }
-
-    .hero-image {
-        aspect-ratio: 1 / 1;
-    }
-
-    .release-item {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .nav-links {
-        gap: var(--spacing-sm);
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-
-    .nav-links a {
-        font-size: 0.7rem;
-    }
-
-    .sessions-grid,
-    .signals-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .release-feature-card,
-    .release-item {
-        flex-direction: column;
-    }
-
-    .metroplex-release-card {
-        grid-template-columns: 1fr;
-    }
-
-    .release-logo-block {
-        justify-content: flex-start;
-    }
-
-    .metroplex-logo {
-        max-width: 220px;
-    }
-
-    .releases-metroplex-logo {
-        max-width: 260px;
-    }
-
-    .release-feature-card,
-    .session-card,
-    .signal-card,
-    .contact-channel,
-    .release-item {
-        padding: var(--spacing-md);
-    }
-}
-
-@media (max-width: 640px) {
-    .hero {
-        min-height: auto;
-        padding: var(--spacing-lg) var(--spacing-md);
-    }
-
-    .hero--inner {
-        min-height: auto;
-        gap: var(--spacing-sm);
-        padding-top: 0.5rem;
-        padding-bottom: var(--spacing-sm);
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero--inner .hero-title {
-        margin-bottom: var(--spacing-sm);
-    }
-
-    .hero--inner .hero-copy {
-        margin-top: var(--spacing-sm);
-    }
-
-    .nav-logo {
-        font-size: 0.7rem;
-    }
-
-    .signal-button {
-        font-size: 0.72rem;
-        padding: 0.8rem 1rem;
-    }
-
-    .release-link,
-    .archive-link,
-    .session-link,
-    .signal-link {
-        white-space: normal;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustus Williams</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Augustus Williams</a>
+
+            <ul class="nav-links">
+                <li><a href="#about">Bio</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="#archive">Archive</a></li>
+                <li><a href="#sessions">Sessions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-name">Augustus Williams</span>
+                <span class="hero-alias">(Gusto)</span>
+            </h1>
+
+            <p class="hero-subtitle">Detroit Techno / DJ + Hybrid Performance</p>
+            <div class="hero-location">Detroit, MI</div>
+
+            <p class="hero-copy">
+                Performance media, press photography, technical specifications, and downloadable archive materials.
+            </p>
+
+            <div class="hero-cta">
+                <a href="https://augustus-williams.kit.com/8597e8cab7"
+                   class="signal-button"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Join the Detroit Techno Signal
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="assets/hero.jpg" alt="Augustus Williams portrait">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 class="section-title">Biography</h2>
+
+                <p>
+                    Augustus Williams (Gusto) is a Detroit techno artist, DJ, and live-hardware performer with more than two decades in the city's underground. A Metroplex recording artist signed to Juan Atkins' foundational label, he builds floor-driven techno in real time from drum machines and sequencers, moving fluidly between DJ, hybrid, and full live-hardware sets. His machine-driven sound has carried him from Detroit warehouses to the Movement Festival stages and a Detroit-Berlin Connection residency.
+                </p>
+
+                <p>
+                    <b>Metroplex recording artist, signed by Juan Atkins.</b> Detroit live-hardware techno, 20 years deep.
+                </p>
+            </div>
+
+            <div class="about-meta">
+                <div class="meta-block">
+                    <h3>Format</h3>
+                    <ul>
+                        <li>DJ Set</li>
+                        <li>Hybrid Set</li>
+                        <li>Live Hardware Set</li>
+                    </ul>
+                </div>
+
+                <div class="meta-block">
+                    <h3>Energy</h3>
+                    <p>Driving and hypnotic. Built for the floor: tension, release, pressure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="releases">
+        <h2 class="section-title">Selected Releases</h2>
+        <p class="section-copy">Catalog entries, remixes, and label releases from the Augustus Williams archive.</p>
+
+        <div class="release-feature-card metroplex-release-card">
+            <div class="release-logo-block">
+             <img src="./assets/metroplex_logo_offwhite_transparent.png"
+                alt="Metroplex Records logo"
+                class="metroplex-logo">
+            </div>
+
+            <div class="release-copy-block">
+                <h3>Increaser EP</h3>
+                <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
+                <p>Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.</p>
+
+                <div class="release-actions">
+                    <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep"
+                       class="release-link"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        Listen on Bandcamp →
+                    </a>
+
+                    <a href="releases.html" class="release-link">
+                        Explore Releases →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="archive" class="archive">
+        <h2 class="section-title">Press Archive</h2>
+
+        <p class="section-copy">
+            Press photography, technical specifications, performance media, downloadable materials, and current booking information.
+        </p>
+
+        <div class="archive-portal">
+            <a href="https://drive.google.com/drive/folders/1sUpPDtW-M7jzXUWhLpzLHjWbYxRapx0u?usp=sharing"
+               class="archive-link"
+               target="_blank"
+               rel="noreferrer noopener">
+                Enter Archive →
+            </a>
+        </div>
+    </section>
+
+    <section id="sessions" class="sessions">
+        <h2 class="section-title">Session Index</h2>
+
+        <div class="sessions-grid">
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2025</span>
+                    <span class="session-format">DJ Mix</span>
+                </div>
+                <h3>Augustus Williams at Movement Detroit 2025 DJ Mix</h3>
+                <p>Official DJ mix from Movement Detroit 2025.</p>
+                <a href="https://music.apple.com/us/album/augustus-williams-at-movement-detroit-2025-dj-mix/1829935543"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Listen Now →
+                </a>
+            </div>
+
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2024</span>
+                    <span class="session-format">DJ Mix</span>
+                </div>
+                <h3>Augustus Williams at Movement Detroit 2024 DJ Mix</h3>
+                <p>Official DJ mix from Movement Detroit 2024.</p>
+                <a href="https://music.apple.com/us/album/augustus-williams-at-movement-detroit-2024-dj-mix/1759039893"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Listen Now →
+                </a>
+            </div>
+
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2023</span>
+                    <span class="session-format">Residency</span>
+                </div>
+                <h3>Residency Detroit x Pop-Kultur 2023</h3>
+                <p>A Detroit-Berlin co-creation residency set with Souci, blending raw techno and experimental club textures.</p>
+                <a href="https://www.youtube.com/watch?v=lqdGTLOE93k&t=6s"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Watch Now →
+                </a>
+            </div>
+
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2022</span>
+                    <span class="session-format">Live Set</span>
+                </div>
+                <h3>Movement Liveset · May 28 2022</h3>
+                <p>Full Movement live set from May 28, 2022 with driving techno rhythms and peak-time intensity.</p>
+                <a href="https://www.youtube.com/watch?v=hjvjkr8fNIA&list=RDhjvjkr8fNIA&start_radio=1&t=8s"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Watch Now →
+                </a>
+            </div>
+
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2021</span>
+                    <span class="session-format">Radio Mix</span>
+                </div>
+                <h3>Bassment Guest Mix · Augustus Williams</h3>
+                <p>Deep underground guest mix recorded for Bassment, loaded with raw Detroit-inspired grooves.</p>
+                <a href="https://www.youtube.com/watch?v=_Pq07RzI4Ws&list=RD_Pq07RzI4Ws&start_radio=1"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Watch Now →
+                </a>
+            </div>
+
+            <div class="session-card">
+                <div class="session-header">
+                    <span class="session-date">2015</span>
+                    <span class="session-format">Remix</span>
+                </div>
+                <h3>Kero · TCKR Concept · Augustus Williams Remix</h3>
+                <p>Vintage techno remix of Kero's TCKR Concept, showcasing early experimental sound design and industrial edge.</p>
+                <a href="https://www.youtube.com/watch?v=27PEpwJwdeM&list=RD27PEpwJwdeM&start_radio=1"
+                   class="session-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Watch Now →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="signals" class="signals">
+        <h2 class="section-title">Signals</h2>
+        <p class="section-copy">Aligned projects, collaborators, labels, collectives, and cultural nodes connected to the Augustus Williams ecosystem.</p>
+
+        <div class="signals-grid">
+            <div class="signal-card">
+                <h3>Techno Snob</h3>
+                <p>Detroit-based techno publication and community hub for underground electronic music culture.</p>
+                <a href="https://www.techno-snob.com"
+                   class="signal-link"
+                   target="_blank"
+                   rel="noreferrer noopener">
+                    Visit →
+                </a>
+            </div>
+
+            <div class="signal-card">
+                <h3>Collaborators</h3>
+                <p>Artists and producers aligned with Augustus Williams' sound design and performance practice.</p>
+                <a href="#" class="signal-link">Explore →</a>
+            </div>
+
+            <div class="signal-card">
+                <h3>Labels</h3>
+                <p>Record labels and imprints featuring Augustus Williams' releases and remixes.</p>
+                <a href="releases.html" class="signal-link">
+                    Discover →
+                </a>
+            </div>
+
+            <div class="signal-card">
+                <h3>Associated Projects</h3>
+                <p>Related initiatives, events, and creative endeavors in the Detroit techno scene.</p>
+                <a href="#" class="signal-link">Connect →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Live Channels</h2>
+
+        <div class="contact-grid">
+            <div class="contact-channel">
+                <h3>Booking</h3>
+                <a href="mailto:booking@augustuswilliamsmusic.com" class="contact-link">
+                    booking@augustuswilliamsmusic.com
+                </a>
+            </div>
+
+            <div class="contact-channel">
+                <h3>Streaming</h3>
+                <a href="https://bandcamp.com/gusto313" class="contact-link" target="_blank" rel="noreferrer noopener">Bandcamp</a>
+                <a href="https://soundcloud.com/augustus-williams-50140506" class="contact-link" target="_blank" rel="noreferrer noopener">SoundCloud</a>
+                <a href="https://music.apple.com/us/artist/augustus-williams/918324441" class="contact-link" target="_blank" rel="noreferrer noopener">Apple Music</a>
+            </div>
+
+            <div class="contact-channel">
+                <h3>Social</h3>
+                <a href="https://www.instagram.com/gustodetroit/reels/" class="contact-link" target="_blank" rel="noreferrer noopener">Instagram</a>
+                <a href="https://www.tiktok.com/@gustodetroit" class="contact-link" target="_blank" rel="noreferrer noopener">TikTok</a>
+            </div>
+
+            <div class="contact-channel">
+                <h3>Signal</h3>
+                <a href="https://augustus-williams.kit.com/8597e8cab7" class="contact-link" target="_blank" rel="noreferrer noopener">
+                    Join the Detroit Techno Signal
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
+            <p class="footer-text">© 2026. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
