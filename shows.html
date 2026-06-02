@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Augustus Williams — Live / Shows</title>
+    <meta name="description" content="Augustus Williams (Gusto) upcoming live techno shows, tour dates, and selected past highlights." />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+
+    <style>
+        /* Reuse the releases-page header system (nav + banner) */
+        .releases-page {
+            background: var(--bg);
+        }
+
+        .releases-page .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.96);
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
+            backdrop-filter: blur(10px);
+        }
+
+        .releases-page .site-nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .releases-page .site-nav-brand {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--fg);
+            border-bottom: none;
+        }
+
+        .releases-page .site-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem 1.5rem;
+            list-style: none;
+        }
+
+        .releases-page .site-nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray-light);
+            border-bottom: none;
+        }
+
+        .releases-page .site-nav-links a:hover,
+        .releases-page .site-nav-links a[aria-current="page"] {
+            color: var(--accent);
+        }
+
+        .releases-page .site-nav-links .nav-cta {
+            color: var(--fg);
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--signal-red);
+            background: rgba(139, 46, 46, 0.12);
+        }
+
+        .releases-page .site-nav-links .nav-cta:hover {
+            color: var(--fg);
+            background: var(--signal-red);
+        }
+
+        .releases-page .releases-banner {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: clamp(140px, 18vh, 220px);
+            overflow: hidden;
+            background: #000;
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
+            /* override global section:not(.hero) padding/border-top */
+            padding: 0;
+            border-top: none;
+        }
+
+        .releases-page .releases-banner img {
+            width: 100%;
+            height: 100%;
+            min-height: clamp(140px, 18vh, 220px);
+            display: block;
+            object-fit: cover;
+            object-position: center 52%;
+            opacity: 0.78;
+        }
+
+        .releases-page .releases-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.66) 34%, rgba(0, 0, 0, 0.24) 66%, rgba(0, 0, 0, 0.3) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.38) 100%);
+            pointer-events: none;
+        }
+
+        .releases-page .releases-banner-content {
+            position: absolute;
+            left: clamp(1rem, 3vw, 2.25rem);
+            right: clamp(1rem, 3vw, 2.25rem);
+            bottom: clamp(0.9rem, 2vw, 1.4rem);
+            z-index: 2;
+            max-width: 32rem;
+        }
+
+        .releases-page .releases-kicker {
+            margin: 0 0 0.35rem;
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.72rem;
+        }
+
+        .releases-page .releases-heading {
+            margin: 0 0 0.35rem;
+            font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            color: var(--fg);
+        }
+
+        .releases-page .releases-heading span {
+            color: var(--accent);
+        }
+
+        .releases-page .releases-copy {
+            max-width: 30rem;
+            margin: 0;
+            color: rgba(245, 241, 235, 0.88);
+            line-height: 1.45;
+            font-size: 0.9rem;
+        }
+
+        .releases-page .releases-banner-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem 1rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Dedicated press strip below the banner */
+        .press-strip {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 3rem);
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
+            background: rgba(139, 46, 46, 0.06);
+        }
+
+        .press-strip-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(1rem, 3vw, 2.25rem);
+            max-width: 980px;
+        }
+
+        .press-strip-mark {
+            flex: none;
+            margin-top: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border-left: 2px solid var(--accent);
+            padding-left: 0.75rem;
+        }
+
+        .press-quotes {
+            position: relative;
+            flex: 1;
+            min-height: 4.5em;
+            margin: 0;
+        }
+
+        .press-quote {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            pointer-events: none;
+        }
+
+        .press-quote.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .press-quote-text {
+            display: block;
+            font-size: clamp(1.25rem, 2.6vw, 1.85rem);
+            line-height: 1.3;
+            font-style: italic;
+            color: var(--fg);
+            margin-bottom: 0.6rem;
+        }
+
+        .press-quote-source {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .press-quote {
+                transition: none;
+            }
+        }
+
+        .releases-page .banner-signal {
+            display: inline-block;
+            padding: 0.65rem 0.9rem;
+            border: 1px solid var(--signal-red);
+            background: rgba(139, 46, 46, 0.12);
+            color: var(--fg);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .releases-page .banner-signal:hover {
+            background: var(--signal-red);
+            color: var(--fg);
+            border-bottom-color: transparent;
+        }
+
+        .releases-page .banner-scroll {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: none;
+        }
+
+        .releases-page .banner-scroll:hover {
+            color: var(--accent);
+        }
+
+        .releases-page .releases-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+        }
+
+        /* Shows-specific: upcoming flyer cards + past highlights */
+        .shows-group {
+            margin-top: var(--spacing-xl);
+        }
+
+        .shows-group:first-of-type {
+            margin-top: var(--spacing-lg);
+        }
+
+        .shows-upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .show-card {
+            border: 1px solid var(--gray-mid);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .show-card:hover {
+            border-color: var(--accent);
+        }
+
+        .show-flyer {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .show-body {
+            padding: var(--spacing-md);
+        }
+
+        .show-date {
+            display: block;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .show-card h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .show-venue {
+            display: block;
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.78rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .show-detail {
+            color: var(--gray-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .show-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        /* Past highlights as a clean credential list */
+        .highlights-list {
+            display: grid;
+            gap: 0;
+            margin-top: var(--spacing-lg);
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .highlight-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .highlight-name {
+            font-size: 1.05rem;
+            color: var(--fg);
+        }
+
+        .highlight-years {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        /* Flagship past cards (with flyers) */
+        .flagship-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .flagship-card {
+            border: 1px solid var(--gray-mid);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .flagship-card:hover {
+            border-color: var(--accent);
+        }
+
+        .flagship-flyer {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .flagship-body {
+            padding: var(--spacing-md);
+        }
+
+        .flagship-body .show-date {
+            display: block;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .flagship-body h3 {
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.05rem;
+        }
+
+        .flagship-body .show-venue {
+            display: block;
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.74rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .flagship-body .show-detail {
+            color: var(--gray-light);
+            font-size: 0.92rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* RA Pick pull-quote */
+        .ra-pick {
+            border-left: 2px solid var(--accent);
+            padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            max-width: 720px;
+        }
+
+        .ra-pick p {
+            color: var(--fg);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .ra-pick cite {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.74rem;
+            font-style: normal;
+        }
+
+        @media (max-width: 900px) {
+            .releases-page .site-nav-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .flagship-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .releases-page .releases-banner,
+            .releases-page .releases-banner img {
+                min-height: 170px;
+            }
+
+            .releases-page .releases-banner::after {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.78) 100%);
+            }
+
+            .releases-page .releases-banner-content {
+                max-width: none;
+            }
+
+            .shows-upcoming-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .releases-page .site-nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .press-strip-inner {
+                flex-direction: column;
+                gap: 0.9rem;
+            }
+
+            .press-quotes {
+                min-height: 5.5em;
+            }
+
+            .releases-page .releases-heading {
+                font-size: clamp(1.35rem, 7vw, 2rem);
+            }
+
+            .highlight-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="releases-page">
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-nav-inner">
+            <a href="index.html" class="site-nav-brand">Augustus Williams</a>
+
+            <ul class="site-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shows.html" aria-current="page">Live</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li>
+                    <a
+                        href="https://augustus-williams.kit.com/8597e8cab7"
+                        class="nav-cta"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Join the Signal
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="releases-banner">
+            <img
+                src="assets/releases-hero-banner-cropped-half-overlay.jpg"
+                alt="Augustus Williams performing live in front of a crowd"
+            />
+
+            <div class="releases-banner-content">
+                <p class="releases-kicker">Live / Tour Dates / Past Highlights</p>
+
+                <h1 class="releases-heading">
+                    Augustus Williams <span>(Gusto)</span>
+                </h1>
+
+                <p class="releases-copy">
+                    Upcoming performances and selected highlights from the road.
+                </p>
+
+                <div class="releases-banner-actions">
+                    <a href="#upcoming" class="banner-signal">See upcoming shows</a>
+                    <a href="#highlights" class="banner-scroll">Past highlights ↓</a>
+                </div>
+            </div>
+        </section>
+
+        <aside class="press-strip" aria-label="Press highlights">
+            <div class="press-strip-inner">
+                <span class="press-strip-mark">Press</span>
+                <p class="press-quotes">
+                    <span class="press-quote is-active">
+                        <span class="press-quote-text">"Detroit beatmaster… radical live hardware electronics."</span>
+                        <span class="press-quote-source">Resident Advisor — RA Pick, Space &amp; Time</span>
+                    </span>
+                    <span class="press-quote">
+                        <span class="press-quote-text">Among the night's "true reliables."</span>
+                        <span class="press-quote-source">Resident Advisor — RA Pick, Fog 18</span>
+                    </span>
+                </p>
+            </div>
+        </aside>
+
+        <section id="upcoming" class="releases-section">
+            <div class="shows-group">
+                <h2 class="section-title">Upcoming</h2>
+
+                <div class="shows-upcoming-grid">
+                    <article class="show-card">
+                        <img class="show-flyer" src="assets/show-2026-06-06.jpg" alt="Open Index flyer — Northern Lights Lounge, Detroit, June 6 2026" />
+                        <div class="show-body">
+                            <span class="show-date">Sat, June 6, 2026</span>
+                            <h3>Open Index w/ Alan Oldham (DJ T-1000)</h3>
+                            <span class="show-venue">Northern Lights Lounge, Detroit</span>
+                            <p class="show-detail">Augustus Williams opens the indoor room · 9:00–11:00 PM</p>
+                            <div class="show-actions">
+                                <a href="https://ra.co/events/2420386" class="release-link" target="_blank" rel="noreferrer noopener">Tickets →</a>
+                                <a href="https://ra.co/events/2420386" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="show-card">
+                        <img class="show-flyer" src="assets/show-2026-06-20.jpg" alt="Audiation welcomes Augustus Williams flyer — The Loading Dock, Austin, June 20 2026" />
+                        <div class="show-body">
+                            <span class="show-date">Sat, June 20, 2026</span>
+                            <h3>Audiation welcomes Augustus Williams</h3>
+                            <span class="show-venue">The Loading Dock, Austin TX</span>
+                            <p class="show-detail">Headline set · 11:00 PM · Funktion-One system</p>
+                            <div class="show-actions">
+                                <a href="https://ra.co/events/2341370" class="release-link" target="_blank" rel="noreferrer noopener">Tickets →</a>
+                                <a href="https://ra.co/events/2341370" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="highlights" class="shows-group">
+                <h2 class="section-title">Past Highlights</h2>
+                <p class="section-copy">Selected festival, label, and live-hardware appearances from the past year.</p>
+
+                <div class="flagship-grid">
+                    <article class="flagship-card">
+                        <img class="flagship-flyer" src="assets/past-metroplex-40.jpg" alt="40 Years of Metroplex Records flyer — Lincoln Factory, Detroit" />
+                        <div class="flagship-body">
+                            <span class="show-date">Sep 12, 2025</span>
+                            <h3>40 Years of Metroplex Records</h3>
+                            <span class="show-venue">Lincoln Factory, Detroit</span>
+                            <p class="show-detail">On the bill with Juan Atkins, Moodymann, Eddie Fowlkes, and Terrence Dixon.</p>
+                            <a href="https://ra.co/events/2235679" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img class="flagship-flyer" src="assets/past-movement-2025.jpg" alt="Movement Music Festival 2025 flyer — Hart Plaza, Detroit" />
+                        <div class="flagship-body">
+                            <span class="show-date">May 2025</span>
+                            <h3>Movement Music Festival</h3>
+                            <span class="show-venue">Hart Plaza, Detroit</span>
+                            <p class="show-detail">25th-anniversary edition of techno's flagship festival.</p>
+                            <a href="https://ra.co/events/2061680" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img class="flagship-flyer" src="assets/past-movement-opening-2026.jpg" alt="Official Movement Opening Party flyer — Lincoln Factory, Detroit" />
+                        <div class="flagship-body">
+                            <span class="show-date">May 22, 2026</span>
+                            <h3>Official Movement Opening Party</h3>
+                            <span class="show-venue">Lincoln Factory, Detroit</span>
+                            <p class="show-detail">Paxahau × Blank Code · with Speedy J, Drumcell, DJ Hyperactive.</p>
+                            <a href="https://ra.co/events/2395256" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="highlights-list">
+                    <div class="highlight-row">
+                        <span class="highlight-name">Detroit Techno Militia × Techno Snob — HALO Detroit (live)</span>
+                        <span class="highlight-years">May 2026</span>
+                    </div>
+                    <div class="highlight-row">
+                        <span class="highlight-name">Fog 18 — Detroit · RA Pick</span>
+                        <span class="highlight-years">Apr 2026</span>
+                    </div>
+                    <div class="highlight-row">
+                        <span class="highlight-name">Detroit–Berlin Connection in Residence — SPKRBOX</span>
+                        <span class="highlight-years">Apr 2026</span>
+                    </div>
+                    <div class="highlight-row">
+                        <span class="highlight-name">Space &amp; Time — Chicago · RA Pick (live hardware)</span>
+                        <span class="highlight-years">Dec 2025</span>
+                    </div>
+                    <div class="highlight-row">
+                        <span class="highlight-name">Marble Bar — Detroit (Gusto live)</span>
+                        <span class="highlight-years">Dec 2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
+            <p class="footer-text">© 2026. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            var quotes = document.querySelectorAll(".press-quotes .press-quote");
+            if (quotes.length < 2) return;
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            var i = 0;
+            setInterval(function () {
+                quotes[i].classList.remove("is-active");
+                i = (i + 1) % quotes.length;
+                quotes[i].classList.add("is-active");
+            }, 6500);
+        })();
+    </script>
+</body>
+</html>

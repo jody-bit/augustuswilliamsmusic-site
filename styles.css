@@ -387,12 +387,74 @@ section:not(.hero) {
     margin-top: var(--spacing-md);
 }
 
+/* SHOWS */
+
+.shows-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.show-card {
+    border: 1px solid var(--gray-mid);
+    background: var(--bg);
+    transition: var(--transition);
+    overflow: hidden;
+}
+
+.show-card:hover {
+    border-color: var(--accent);
+}
+
+.show-flyer {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-bottom: 1px solid var(--gray-mid);
+}
+
+.show-info {
+    padding: var(--spacing-lg);
+}
+
+.show-date,
+.show-venue {
+    display: block;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+}
+
+.show-info h3 {
+    margin: var(--spacing-xs) 0 var(--spacing-sm);
+}
+
+.show-info p {
+    color: var(--gray-light);
+}
+
+.show-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.section-portal {
+    margin-top: var(--spacing-lg);
+}
+
 /* LINKS WITH HOVER ANIMATION */
 
 .release-link,
 .archive-link,
 .session-link,
-.signal-link {
+.signal-link,
+.show-link {
     display: inline-flex;
     align-items: center;
     width: fit-content;
@@ -409,7 +471,8 @@ section:not(.hero) {
 .release-link:hover,
 .archive-link:hover,
 .session-link:hover,
-.signal-link:hover {
+.signal-link:hover,
+.show-link:hover {
     color: var(--fg);
     border-bottom-color: var(--accent);
     transform: translateX(0.35rem);
@@ -532,7 +595,8 @@ section:not(.hero) {
 
     .sessions-grid,
     .signals-grid,
-    .contact-grid {
+    .contact-grid,
+    .shows-grid {
         grid-template-columns: 1fr;
     }
 
@@ -561,7 +625,8 @@ section:not(.hero) {
     .session-card,
     .signal-card,
     .contact-channel,
-    .release-item {
+    .release-item,
+    .show-info {
         padding: var(--spacing-md);
     }
 }
@@ -603,7 +668,8 @@ section:not(.hero) {
     .release-link,
     .archive-link,
     .session-link,
-    .signal-link {
+    .signal-link,
+    .show-link {
         white-space: normal;
     }
 }
