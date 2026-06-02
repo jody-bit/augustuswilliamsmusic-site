@@ -55,6 +55,8 @@ p {
     margin-bottom: var(--spacing-md);
 }
 
+/* NAV */
+
 .nav {
     position: fixed;
     top: 0;
@@ -103,6 +105,8 @@ p {
     color: var(--accent);
 }
 
+/* HERO */
+
 .hero {
     margin-top: 60px;
     min-height: 100vh;
@@ -114,10 +118,6 @@ p {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.hero-content {
-    width: 100%;
 }
 
 .hero--inner {
@@ -223,6 +223,8 @@ p {
     transform: scale(1.02);
 }
 
+/* SECTIONS */
+
 section:not(.hero) {
     max-width: 1400px;
     margin: 0 auto;
@@ -238,6 +240,8 @@ section:not(.hero) {
     text-transform: uppercase;
     margin-bottom: 1.5rem;
 }
+
+/* ABOUT */
 
 .about {
     background: var(--gray-dark);
@@ -283,6 +287,42 @@ section:not(.hero) {
     margin-bottom: var(--spacing-xs);
 }
 
+/* METROPLEX LOGO */
+
+.metroplex-logo {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    opacity: 0.96;
+    transition: var(--transition);
+}
+
+.metroplex-logo:hover {
+    opacity: 1;
+    transform: scale(1.025);
+}
+
+.release-logo-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.release-copy-block {
+    min-width: 0;
+}
+
+.releases-brand-lockup {
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.releases-metroplex-logo {
+    max-width: 320px;
+}
+
+/* RELEASES */
+
 .release-feature-card,
 .session-card,
 .signal-card,
@@ -298,6 +338,13 @@ section:not(.hero) {
     justify-content: space-between;
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
+}
+
+.metroplex-release-card {
+    display: grid;
+    grid-template-columns: minmax(180px, 280px) 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
 }
 
 .releases-group {
@@ -316,7 +363,8 @@ section:not(.hero) {
     gap: var(--spacing-lg);
 }
 
-.release-info h4 {
+.release-info h4,
+.release-copy-block h3 {
     margin-bottom: var(--spacing-xs);
 }
 
@@ -339,21 +387,41 @@ section:not(.hero) {
     margin-top: var(--spacing-md);
 }
 
+/* LINKS WITH HOVER ANIMATION */
+
 .release-link,
 .archive-link,
 .session-link,
 .signal-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
     font-family: var(--font-mono);
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.875rem;
     white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
 }
+
+.release-link:hover,
+.archive-link:hover,
+.session-link:hover,
+.signal-link:hover {
+    color: var(--fg);
+    border-bottom-color: var(--accent);
+    transform: translateX(0.35rem);
+}
+
+/* ARCHIVE */
 
 .archive-portal {
     margin-top: var(--spacing-xl);
 }
+
+/* SESSIONS / SIGNALS / CONTACT */
 
 .sessions {
     background: var(--gray-dark);
@@ -400,6 +468,8 @@ section:not(.hero) {
     word-break: break-word;
 }
 
+/* FOOTER */
+
 .footer {
     padding: var(--spacing-lg);
     border-top: 1px solid var(--gray-mid);
@@ -415,6 +485,8 @@ section:not(.hero) {
 .footer-text .accent {
     color: var(--accent);
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 1024px) {
     .hero,
@@ -469,6 +541,22 @@ section:not(.hero) {
         flex-direction: column;
     }
 
+    .metroplex-release-card {
+        grid-template-columns: 1fr;
+    }
+
+    .release-logo-block {
+        justify-content: flex-start;
+    }
+
+    .metroplex-logo {
+        max-width: 220px;
+    }
+
+    .releases-metroplex-logo {
+        max-width: 260px;
+    }
+
     .release-feature-card,
     .session-card,
     .signal-card,
@@ -510,5 +598,12 @@ section:not(.hero) {
     .signal-button {
         font-size: 0.72rem;
         padding: 0.8rem 1rem;
+    }
+
+    .release-link,
+    .archive-link,
+    .session-link,
+    .signal-link {
+        white-space: normal;
     }
 }

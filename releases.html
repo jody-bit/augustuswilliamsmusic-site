@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Augustus Williams — Releases</title>
+
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="manifest" href="site.webmanifest" />
     <meta name="theme-color" content="#000000" />
+
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
 
@@ -192,79 +194,6 @@
             padding: 1.25rem clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
         }
 
-        .releases-page .releases-group {
-            margin-top: var(--spacing-xl);
-        }
-
-        .releases-page .releases-list {
-            display: grid;
-            gap: var(--spacing-md);
-        }
-
-        .releases-page .releases-subtitle {
-            font-family: var(--font-mono);
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.875rem;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .releases-page .release-feature-card,
-        .releases-page .release-item {
-            border: 1px solid var(--gray-mid);
-            padding: var(--spacing-lg);
-            transition: var(--transition);
-        }
-
-        .releases-page .release-feature-card {
-            display: flex;
-            justify-content: space-between;
-            gap: var(--spacing-lg);
-        }
-
-        .releases-page .release-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: var(--spacing-lg);
-        }
-
-        .releases-page .release-feature-card:hover,
-        .releases-page .release-item:hover {
-            border-color: var(--accent);
-        }
-
-        .releases-page .release-info h4 {
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .releases-page .release-meta,
-        .releases-page .release-platform {
-            display: block;
-            font-family: var(--font-mono);
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.8rem;
-        }
-
-        .releases-page .release-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-
-        .releases-page .release-link {
-            font-family: var(--font-mono);
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.875rem;
-            white-space: nowrap;
-        }
-
         @media (max-width: 900px) {
             .releases-page .site-nav-inner {
                 align-items: flex-start;
@@ -282,11 +211,6 @@
 
             .releases-page .releases-banner-content {
                 max-width: none;
-            }
-
-            .releases-page .release-feature-card,
-            .releases-page .release-item {
-                flex-direction: column;
             }
         }
 
@@ -318,14 +242,10 @@
                 flex-direction: column;
                 gap: 0.6rem;
             }
-
-            .releases-page .release-feature-card,
-            .releases-page .release-item {
-                padding: var(--spacing-md);
-            }
         }
     </style>
 </head>
+
 <body class="releases-page">
     <nav class="site-nav" aria-label="Primary">
         <div class="site-nav-inner">
@@ -350,7 +270,10 @@
 
     <main>
         <section class="releases-banner">
-            <img src="assets/releases-hero-banner-cropped-half-overlay.jpg" alt="Augustus Williams performing live in front of a crowd" />
+            <img
+                src="assets/releases-hero-banner-cropped-half-overlay.jpg"
+                alt="Augustus Williams performing live in front of a crowd"
+            />
 
             <div class="releases-banner-content">
                 <p class="releases-kicker">Releases / Selected Catalog / Label Archive</p>
@@ -379,29 +302,57 @@
         </section>
 
         <section id="releases" class="releases-section">
-            <div id="featured" class="release-feature-card">
-                <div>
+            <div class="releases-brand-lockup">
+                <img
+                    src="assets/metroplex-logo-offwhite.png"
+                    alt="Metroplex Records logo"
+                    class="metroplex-logo releases-metroplex-logo"
+                />
+            </div>
+
+            <div id="featured" class="release-feature-card metroplex-release-card">
+                <div class="release-logo-block">
+                    <img
+                        src="assets/metroplex-logo-offwhite.png"
+                        alt="Metroplex Records logo"
+                        class="metroplex-logo"
+                    />
+                </div>
+
+                <div class="release-copy-block">
                     <h3>INCREASER EP</h3>
                     <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
                     <p>Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.</p>
-                </div>
 
-                <div class="release-actions">
-                    <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link" target="_blank" rel="noreferrer noopener">
-                        LISTEN ON BANDCAMP →
-                    </a>
+                    <div class="release-actions">
+                        <a
+                            href="https://metroplexrecords.bandcamp.com/album/increaser-ep"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            LISTEN ON BANDCAMP →
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div id="metroplex" class="releases-group">
                 <h3 class="releases-subtitle">METROPLEX RECORDS</h3>
+
                 <div class="releases-list">
                     <div class="release-item">
                         <div class="release-info">
                             <h4>INCREASER EP</h4>
                             <span class="release-platform">Metroplex Records · Bandcamp · 2023</span>
                         </div>
-                        <a href="https://metroplexrecords.bandcamp.com/album/increaser-ep" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://metroplexrecords.bandcamp.com/album/increaser-ep"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -410,13 +361,20 @@
 
             <div id="thisis" class="releases-group">
                 <h3 class="releases-subtitle">THISIS</h3>
+
                 <div class="releases-list">
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Outside Systems of Human Presumption</h4>
-                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                            <span class="release-platform">THISIS · Bandcamp</span>
                         </div>
-                        <a href="https://thisislabel.bandcamp.com/album/outside-systems-of-human-presumption" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://thisislabel.bandcamp.com/album/outside-systems-of-human-presumption"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -424,9 +382,15 @@
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Get Yours</h4>
-                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                            <span class="release-platform">THISIS · Bandcamp</span>
                         </div>
-                        <a href="https://thisislabel.bandcamp.com/album/get-yours" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://thisislabel.bandcamp.com/album/get-yours"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -434,9 +398,15 @@
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Sammy the Automated Sharebroker</h4>
-                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                            <span class="release-platform">THISIS · Bandcamp</span>
                         </div>
-                        <a href="https://thisislabel.bandcamp.com/album/sammy-the-automated-sharebroker-2" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://thisislabel.bandcamp.com/album/sammy-the-automated-sharebroker-2"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -444,9 +414,15 @@
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Sammy the Automated Sharebroker, Augustus Williams Remix</h4>
-                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                            <span class="release-platform">THISIS · Bandcamp</span>
                         </div>
-                        <a href="https://thisislabel.bandcamp.com/track/sammy-the-automated-sharebroker-augustus-willams-remix" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://thisislabel.bandcamp.com/track/sammy-the-automated-sharebroker-augustus-willams-remix"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -454,9 +430,15 @@
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Kero — TCKR Concept, Augustus Williams Remix</h4>
-                            <span class="release-platform">THISIS · Bandcamp · Year TBA</span>
+                            <span class="release-platform">THISIS · Bandcamp</span>
                         </div>
-                        <a href="https://thisislabel.bandcamp.com/track/tckr-concept-augustus-williams-remix" class="release-link" target="_blank" rel="noreferrer noopener">
+
+                        <a
+                            href="https://thisislabel.bandcamp.com/track/tckr-concept-augustus-williams-remix"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             LISTEN ON BANDCAMP →
                         </a>
                     </div>
@@ -465,68 +447,77 @@
 
             <div id="beatport" class="releases-group">
                 <h3 class="releases-subtitle">BEATPORT ARCHIVE</h3>
+
                 <div class="releases-list">
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Psychosis</h4>
-                            <span class="release-platform">Beatport Archive · Release · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Release</span>
                         </div>
+
                         <a href="https://www.beatport.com/release/psychosis/230810" class="release-link" target="_blank" rel="noreferrer noopener">VIEW RELEASE →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Jack Your Body</h4>
-                            <span class="release-platform">Beatport Archive · Release · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Release</span>
                         </div>
+
                         <a href="https://www.beatport.com/release/jack-your-body/1081951" class="release-link" target="_blank" rel="noreferrer noopener">VIEW RELEASE →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Sample Sessions</h4>
-                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Track</span>
                         </div>
+
                         <a href="https://www.beatport.com/track/sample-sessions/5162207" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Invalid Memory</h4>
-                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Track</span>
                         </div>
+
                         <a href="https://www.beatport.com/track/invalid-memory/5072484" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Psychological Terror</h4>
-                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Track</span>
                         </div>
+
                         <a href="https://www.beatport.com/track/psychological-terror/5141100" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Black Wolf</h4>
-                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Track</span>
                         </div>
+
                         <a href="https://www.beatport.com/track/black-wolf/1145940" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>Nite Train</h4>
-                            <span class="release-platform">Beatport Archive · Track · Year TBA</span>
+                            <span class="release-platform">Beatport Archive · Track</span>
                         </div>
+
                         <a href="https://www.beatport.com/track/nite-train/1462486" class="release-link" target="_blank" rel="noreferrer noopener">VIEW TRACK →</a>
                     </div>
 
                     <div class="release-item">
                         <div class="release-info">
                             <h4>GND</h4>
-                            <span class="release-platform">Beatport Artist Archive · Artist Page · Year TBA</span>
+                            <span class="release-platform">Beatport Artist Archive · Artist Page</span>
                         </div>
+
                         <a href="https://www.beatport.com/artist/gnd/342854" class="release-link" target="_blank" rel="noreferrer noopener">VIEW ARCHIVE →</a>
                     </div>
                 </div>
