@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Augustus Williams — Live / Shows</title>
-    <meta name="description" content="Augustus Williams (Gusto) upcoming live techno shows, tour dates, and selected past highlights." />
+    <meta
+        name="description"
+        content="Augustus Williams upcoming live techno shows, tour dates, workshops, and selected past highlights."
+    />
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -16,7 +20,6 @@
     <script defer src="script.js"></script>
 
     <style>
-        /* Reuse the releases-page header system (nav + banner) */
         .releases-page {
             background: var(--bg);
         }
@@ -91,7 +94,6 @@
             overflow: hidden;
             background: #000;
             border-bottom: 1px solid rgba(245, 241, 235, 0.12);
-            /* override global section:not(.hero) padding/border-top */
             padding: 0;
             border-top: none;
         }
@@ -162,7 +164,6 @@
             margin-top: 0.75rem;
         }
 
-        /* Dedicated press strip below the banner */
         .press-strip {
             max-width: 1400px;
             margin: 0 auto;
@@ -228,12 +229,6 @@
             color: var(--accent);
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .press-quote {
-                transition: none;
-            }
-        }
-
         .releases-page .banner-signal {
             display: inline-block;
             padding: 0.65rem 0.9rem;
@@ -271,7 +266,6 @@
             padding: 1.25rem clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
         }
 
-        /* Shows-specific: upcoming flyer cards + past highlights */
         .shows-group {
             margin-top: var(--spacing-xl);
         }
@@ -280,14 +274,20 @@
             margin-top: var(--spacing-lg);
         }
 
-        .shows-upcoming-grid {
+        .shows-upcoming-grid,
+        .flagship-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-lg);
             margin-top: var(--spacing-lg);
         }
 
-        .show-card {
+        .flagship-grid.three-up {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .show-card,
+        .flagship-card {
             border: 1px solid var(--gray-mid);
             transition: var(--transition);
             display: flex;
@@ -295,11 +295,13 @@
             overflow: hidden;
         }
 
-        .show-card:hover {
+        .show-card:hover,
+        .flagship-card:hover {
             border-color: var(--accent);
         }
 
-        .show-flyer {
+        .show-flyer,
+        .flagship-flyer {
             width: 100%;
             aspect-ratio: 4 / 5;
             object-fit: cover;
@@ -307,7 +309,8 @@
             border-bottom: 1px solid var(--gray-mid);
         }
 
-        .show-body {
+        .show-body,
+        .flagship-body {
             padding: var(--spacing-md);
         }
 
@@ -321,8 +324,10 @@
             margin-bottom: var(--spacing-xs);
         }
 
-        .show-card h3 {
+        .show-card h3,
+        .flagship-card h3 {
             margin-bottom: var(--spacing-xs);
+            font-size: 1.05rem;
         }
 
         .show-venue {
@@ -346,7 +351,6 @@
             gap: var(--spacing-md);
         }
 
-        /* Past highlights as a clean credential list */
         .highlights-list {
             display: grid;
             gap: 0;
@@ -377,91 +381,10 @@
             white-space: nowrap;
         }
 
-        /* Flagship past cards (with flyers) */
-        .flagship-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
-        }
-
-        .flagship-card {
-            border: 1px solid var(--gray-mid);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .flagship-card:hover {
-            border-color: var(--accent);
-        }
-
-        .flagship-flyer {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid var(--gray-mid);
-        }
-
-        .flagship-body {
-            padding: var(--spacing-md);
-        }
-
-        .flagship-body .show-date {
-            display: block;
-            font-family: var(--font-mono);
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.78rem;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .flagship-body h3 {
-            margin-bottom: var(--spacing-xs);
-            font-size: 1.05rem;
-        }
-
-        .flagship-body .show-venue {
-            display: block;
-            font-family: var(--font-mono);
-            color: var(--gray-light);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: 0.74rem;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .flagship-body .show-detail {
-            color: var(--gray-light);
-            font-size: 0.92rem;
-            margin-bottom: var(--spacing-md);
-        }
-
-        /* RA Pick pull-quote */
-        .ra-pick {
-            border-left: 2px solid var(--accent);
-            padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-            max-width: 720px;
-        }
-
-        .ra-pick p {
-            color: var(--fg);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .ra-pick cite {
-            font-family: var(--font-mono);
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-size: 0.74rem;
-            font-style: normal;
+        @media (prefers-reduced-motion: reduce) {
+            .press-quote {
+                transition: none;
+            }
         }
 
         @media (max-width: 900px) {
@@ -470,7 +393,9 @@
                 flex-direction: column;
             }
 
-            .flagship-grid {
+            .shows-upcoming-grid,
+            .flagship-grid,
+            .flagship-grid.three-up {
                 grid-template-columns: 1fr;
             }
 
@@ -486,10 +411,6 @@
             .releases-page .releases-banner-content {
                 max-width: none;
             }
-
-            .shows-upcoming-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 640px) {
@@ -504,10 +425,6 @@
 
             .press-quotes {
                 min-height: 5.5em;
-            }
-
-            .shows-upcoming-grid {
-                grid-template-columns: 1fr;
             }
 
             .releases-page .releases-heading {
@@ -553,19 +470,19 @@
             />
 
             <div class="releases-banner-content">
-                <p class="releases-kicker">Live / Tour Dates / Past Highlights</p>
+                <p class="releases-kicker">Live / Tour Dates / Workshops / Selected Highlights</p>
 
                 <h1 class="releases-heading">
                     Augustus Williams <span>(Gusto)</span>
                 </h1>
 
                 <p class="releases-copy">
-                    Upcoming performances and selected highlights from the road.
+                    Upcoming performances, education sessions, and selected highlights from the road.
                 </p>
 
                 <div class="releases-banner-actions">
                     <a href="#upcoming" class="banner-signal">See upcoming shows</a>
-                    <a href="#highlights" class="banner-scroll">Past highlights ↓</a>
+                    <a href="#highlights" class="banner-scroll">Selected highlights ↓</a>
                 </div>
             </div>
         </section>
@@ -573,11 +490,13 @@
         <aside class="press-strip" aria-label="Press highlights">
             <div class="press-strip-inner">
                 <span class="press-strip-mark">Press</span>
+
                 <p class="press-quotes">
                     <span class="press-quote is-active">
                         <span class="press-quote-text">"Detroit beatmaster… radical live hardware electronics."</span>
                         <span class="press-quote-source">Resident Advisor — RA Pick, Space &amp; Time</span>
                     </span>
+
                     <span class="press-quote">
                         <span class="press-quote-text">Among the night's "true reliables."</span>
                         <span class="press-quote-source">Resident Advisor — RA Pick, Fog 18</span>
@@ -592,43 +511,72 @@
 
                 <div class="shows-upcoming-grid">
                     <article class="show-card">
-                        <img class="show-flyer" src="assets/show-2026-06-06.jpg" alt="Open Index flyer — Northern Lights Lounge, Detroit, June 6 2026" />
+                        <img
+                            class="show-flyer"
+                            src="assets/show-2026-06-28-how-not-to-suck.jpg"
+                            alt="How Not To Suck flyer — Tec-Troit Education Series, Detroit, June 28 2026"
+                        />
+
                         <div class="show-body">
-                            <span class="show-date">Sat, June 6, 2026</span>
-                            <h3>Open Index w/ Alan Oldham (DJ T-1000)</h3>
-                            <span class="show-venue">Northern Lights Lounge, Detroit</span>
-                            <p class="show-detail">Augustus Williams opens the indoor room · 9:00–11:00 PM</p>
+                            <span class="show-date">Sun, June 28, 2026 · 4:00 PM</span>
+
+                            <h3>How Not To Suck</h3>
+
+                            <span class="show-venue">Tec-Troit Festival · 1751 Taylor St, Detroit</span>
+
+                            <p class="show-detail">
+                                Education Series workshop with Augustus Williams. Lessons from 20+ years of making electronic music, with Q&amp;A, gear demo, live beat build, and audience participation.
+                            </p>
+
                             <div class="show-actions">
-                                <a href="https://ra.co/events/2420386" class="release-link" target="_blank" rel="noreferrer noopener">Tickets →</a>
-                                <a href="https://ra.co/events/2420386" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+                                <a
+                                    href="https://www.facebook.com/share/187tqxwymq/"
+                                    class="release-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    Details →
+                                </a>
                             </div>
                         </div>
                     </article>
 
                     <article class="show-card">
-                        <img class="show-flyer" src="assets/show-2026-06-20.jpg" alt="Audiation welcomes Augustus Williams flyer — The Loading Dock, Austin, June 20 2026" />
-                        <div class="show-body">
-                            <span class="show-date">Sat, June 20, 2026</span>
-                            <h3>Audiation welcomes Augustus Williams</h3>
-                            <span class="show-venue">The Loading Dock, Austin TX</span>
-                            <p class="show-detail">Headline set · 11:00 PM · Funktion-One system</p>
-                            <div class="show-actions">
-                                <a href="https://ra.co/events/2341370" class="release-link" target="_blank" rel="noreferrer noopener">Tickets →</a>
-                                <a href="https://ra.co/events/2341370" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
-                            </div>
-                        </div>
-                    </article>
+                        <img
+                            class="show-flyer"
+                            src="assets/show-2026-blissfest.jpg"
+                            alt="Blissfest 2026 Silent Disco lineup flyer"
+                        />
 
-                    <article class="show-card">
-                        <img class="show-flyer" src="assets/show-2026-blissfest.jpg" alt="Blissfest 2026 Silent Disco lineup" />
                         <div class="show-body">
                             <span class="show-date">Fri, July 10, 2026</span>
+
                             <h3>Blissfest 2026 · Silent Disco</h3>
+
                             <span class="show-venue">Blissfest, Harbor Springs, MI</span>
-                            <p class="show-detail">Live set · 11:00 PM–3:00 AM · curated Detroit-techno Silent Disco</p>
+
+                            <p class="show-detail">
+                                Live set · 11:00 PM–3:00 AM · curated Detroit-techno Silent Disco.
+                            </p>
+
                             <div class="show-actions">
-                                <a href="https://events.leapevents.com/tickets/blissfest2026" class="release-link" target="_blank" rel="noreferrer noopener">Tickets →</a>
-                                <a href="https://blissfest.org/pages/silent-disco" class="release-link" target="_blank" rel="noreferrer noopener">Info →</a>
+                                <a
+                                    href="https://events.leapevents.com/tickets/blissfest2026"
+                                    class="release-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    Tickets →
+                                </a>
+
+                                <a
+                                    href="https://blissfest.org/pages/silent-disco"
+                                    class="release-link"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    Info →
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -636,63 +584,211 @@
             </div>
 
             <div id="highlights" class="shows-group">
-                <h2 class="section-title">Past Highlights</h2>
-                <p class="section-copy">Selected festival, label, and live-hardware appearances from the past year.</p>
+                <h2 class="section-title">Selected Highlights</h2>
 
-                <div class="flagship-grid">
-                    <article class="flagship-card">
-                        <img class="flagship-flyer" src="assets/past-metroplex-40.jpg" alt="40 Years of Metroplex Records flyer — Lincoln Factory, Detroit" />
-                        <div class="flagship-body">
-                            <span class="show-date">Sep 12, 2025</span>
-                            <h3>40 Years of Metroplex Records</h3>
-                            <span class="show-venue">Lincoln Factory, Detroit</span>
-                            <p class="show-detail">On the bill with Juan Atkins, Moodymann, Eddie Fowlkes, and Terrence Dixon.</p>
-                            <a href="https://ra.co/events/2235679" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
-                        </div>
-                    </article>
+                <p class="section-copy">
+                    Selected festival, label, live-hardware, community, and workshop appearances from the archive.
+                </p>
 
+                <div class="flagship-grid three-up">
                     <article class="flagship-card">
-                        <img class="flagship-flyer" src="assets/past-movement-2025.jpg" alt="Movement Music Festival 2025 flyer — Hart Plaza, Detroit" />
-                        <div class="flagship-body">
-                            <span class="show-date">May 2025</span>
-                            <h3>Movement Music Festival</h3>
-                            <span class="show-venue">Hart Plaza, Detroit</span>
-                            <p class="show-detail">25th-anniversary edition of techno's flagship festival.</p>
-                            <a href="https://ra.co/events/2061680" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
-                        </div>
-                    </article>
+                        <img
+                            class="flagship-flyer"
+                            src="assets/past-movement-opening-2026.jpg"
+                            alt="Official Movement Opening Party flyer — Lincoln Factory, Detroit"
+                        />
 
-                    <article class="flagship-card">
-                        <img class="flagship-flyer" src="assets/past-movement-opening-2026.jpg" alt="Official Movement Opening Party flyer — Lincoln Factory, Detroit" />
                         <div class="flagship-body">
                             <span class="show-date">May 22, 2026</span>
+
                             <h3>Official Movement Opening Party</h3>
+
                             <span class="show-venue">Lincoln Factory, Detroit</span>
-                            <p class="show-detail">Paxahau × Blank Code · with Speedy J, Drumcell, DJ Hyperactive.</p>
-                            <a href="https://ra.co/events/2395256" class="release-link" target="_blank" rel="noreferrer noopener">Details on RA →</a>
+
+                            <p class="show-detail">
+                                Paxahau × Blank Code · with Speedy J, Drumcell, DJ Hyperactive.
+                            </p>
+
+                            <a
+                                href="https://ra.co/events/2395256"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Details on RA →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img
+                            class="flagship-flyer"
+                            src="assets/show-2026-06-20.jpg"
+                            alt="Audiation welcomes Augustus Williams flyer — The Loading Dock, Austin, June 20 2026"
+                        />
+
+                        <div class="flagship-body">
+                            <span class="show-date">Jun 20, 2026</span>
+
+                            <h3>Audiation welcomes Augustus Williams</h3>
+
+                            <span class="show-venue">The Loading Dock, Austin TX</span>
+
+                            <p class="show-detail">
+                                Headline set · Funktion-One system.
+                            </p>
+
+                            <a
+                                href="https://ra.co/events/2341370"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Details on RA →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img
+                            class="flagship-flyer"
+                            src="assets/show-2026-06-13-rhythm-reel.jpg"
+                            alt="The Rhythm Reel: Black Music on Film flyer — Campfire Films, Detroit, June 13 2026"
+                        />
+
+                        <div class="flagship-body">
+                            <span class="show-date">Jun 13, 2026</span>
+
+                            <h3>The Rhythm Reel: Black Music on Film</h3>
+
+                            <span class="show-venue">Campfire Films × Roar Brewing Company, Detroit</span>
+
+                            <p class="show-detail">
+                                Outdoor celebration of Black music, film, and community featuring Augustus Williams.
+                            </p>
+
+                            <a
+                                href="https://www.instagram.com/reel/DZdMC5hNcSe/"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Event Media →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img
+                            class="flagship-flyer"
+                            src="assets/show-2026-06-06.jpg"
+                            alt="Open Index flyer — Northern Lights Lounge, Detroit, June 6 2026"
+                        />
+
+                        <div class="flagship-body">
+                            <span class="show-date">Jun 6, 2026</span>
+
+                            <h3>Open Index w/ Alan Oldham (DJ T-1000)</h3>
+
+                            <span class="show-venue">Northern Lights Lounge, Detroit</span>
+
+                            <p class="show-detail">
+                                Augustus Williams opened the indoor room.
+                            </p>
+
+                            <a
+                                href="https://ra.co/events/2420386"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Details on RA →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img
+                            class="flagship-flyer"
+                            src="assets/past-metroplex-40.jpg"
+                            alt="40 Years of Metroplex Records flyer — Lincoln Factory, Detroit"
+                        />
+
+                        <div class="flagship-body">
+                            <span class="show-date">Sep 12, 2025</span>
+
+                            <h3>40 Years of Metroplex Records</h3>
+
+                            <span class="show-venue">Lincoln Factory, Detroit</span>
+
+                            <p class="show-detail">
+                                On the bill with Juan Atkins, Moodymann, Eddie Fowlkes, and Terrence Dixon.
+                            </p>
+
+                            <a
+                                href="https://ra.co/events/2235679"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Details on RA →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="flagship-card">
+                        <img
+                            class="flagship-flyer"
+                            src="assets/past-movement-2025.jpg"
+                            alt="Movement Music Festival 2025 flyer — Hart Plaza, Detroit"
+                        />
+
+                        <div class="flagship-body">
+                            <span class="show-date">May 2025</span>
+
+                            <h3>Movement Music Festival</h3>
+
+                            <span class="show-venue">Hart Plaza, Detroit</span>
+
+                            <p class="show-detail">
+                                25th-anniversary edition of techno's flagship festival.
+                            </p>
+
+                            <a
+                                href="https://ra.co/events/2061680"
+                                class="release-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Details on RA →
+                            </a>
                         </div>
                     </article>
                 </div>
 
                 <div class="highlights-list">
                     <div class="highlight-row">
-                        <span class="highlight-name">Detroit Techno Militia × Techno Snob — HALO Detroit (live)</span>
+                        <span class="highlight-name">Detroit Techno Militia × Techno Snob — HALO Detroit live set</span>
                         <span class="highlight-years">May 2026</span>
                     </div>
+
                     <div class="highlight-row">
                         <span class="highlight-name">Fog 18 — Detroit · RA Pick</span>
                         <span class="highlight-years">Apr 2026</span>
                     </div>
+
                     <div class="highlight-row">
                         <span class="highlight-name">Detroit–Berlin Connection in Residence — SPKRBOX</span>
                         <span class="highlight-years">Apr 2026</span>
                     </div>
+
                     <div class="highlight-row">
-                        <span class="highlight-name">Space &amp; Time — Chicago · RA Pick (live hardware)</span>
+                        <span class="highlight-name">Space &amp; Time — Chicago · RA Pick, live hardware</span>
                         <span class="highlight-years">Dec 2025</span>
                     </div>
+
                     <div class="highlight-row">
-                        <span class="highlight-name">Marble Bar — Detroit (Gusto live)</span>
+                        <span class="highlight-name">Marble Bar — Detroit, Gusto live</span>
                         <span class="highlight-years">Dec 2025</span>
                     </div>
                 </div>
@@ -706,12 +802,15 @@
             <p class="footer-text">© 2026. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
         (function () {
             var quotes = document.querySelectorAll(".press-quotes .press-quote");
             if (quotes.length < 2) return;
             if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
             var i = 0;
+
             setInterval(function () {
                 quotes[i].classList.remove("is-active");
                 i = (i + 1) % quotes.length;
