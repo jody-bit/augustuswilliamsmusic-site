@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How Not To Suck — Augustus Williams</title>
+    <meta
+        name="description"
+        content="How Not To Suck: lessons from Augustus Williams on electronic music, discipline, live hardware, Detroit techno, and creative growth."
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .field-note-page {
+            background: var(--bg);
+        }
+
+        .page-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .page-kicker {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-title {
+            max-width: 980px;
+            font-size: clamp(2.25rem, 7vw, 5.8rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-dek {
+            max-width: 760px;
+            color: var(--gray-light);
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .page-meta {
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+        }
+
+        .photo-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(1.25rem, 4vw, 3rem);
+        }
+
+        .photo-hero img {
+            width: 100%;
+            height: clamp(360px, 58vw, 720px);
+            object-fit: cover;
+            object-position: center 45%;
+            display: block;
+            border: 1px solid var(--gray-mid);
+        }
+
+        .workshop-flyer {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+        }
+
+        .workshop-flyer img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--gray-mid);
+        }
+
+        .workshop-layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+            display: grid;
+            grid-template-columns: minmax(0, 760px) minmax(240px, 1fr);
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: start;
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .workshop-body p {
+            color: rgba(245, 241, 235, 0.9);
+            font-size: 1.04rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .workshop-body h2 {
+            margin: 2.5rem 0 1rem;
+        }
+
+        .workshop-body ul {
+            color: rgba(245, 241, 235, 0.9);
+            line-height: 1.8;
+            margin: 0 0 1.5rem 1.25rem;
+        }
+
+        .workshop-body a,
+        .workshop-aside a {
+            color: var(--accent);
+        }
+
+        .workshop-aside {
+            position: sticky;
+            top: 6rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .workshop-aside h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .workshop-aside p {
+            color: var(--gray-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .workshop-cards {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(5rem, 8vw, 7rem);
+        }
+
+        .workshop-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .workshop-card {
+            border: 1px solid var(--gray-mid);
+            padding: var(--spacing-md);
+        }
+
+        .workshop-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .workshop-card p {
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .workshop-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-aside {
+                position: static;
+            }
+
+            .workshop-card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-hero img {
+                height: clamp(280px, 70vw, 520px);
+            }
+        }
+    </style>
+</head>
+
+<body class="field-note-page">
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Augustus Williams</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shows.html">Live</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="field-notes.html" aria-current="page">Field Notes</a></li>
+                <li><a href="index.html#about">Bio</a></li>
+                <li><a href="index.html#archive">Archive</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <header class="page-hero">
+            <p class="page-kicker">Field Notes / Workshop / Education</p>
+
+            <h1 class="page-title">How Not To Suck</h1>
+
+            <p class="page-dek">
+                Lessons from 20+ years of making electronic music, learning the hard way, and passing the useful parts forward.
+            </p>
+
+            <p class="page-meta">Augustus Williams · Tec-Troit Education Series · June 2026</p>
+        </header>
+
+        <section class="photo-hero">
+            <img
+                src="assets/field-notes/works-workshop-03-hardware.jpg"
+                alt="Live hardware setup for an Augustus Williams performance"
+            />
+        </section>
+
+        <section class="workshop-flyer">
+            <img
+                src="assets/show-2026-06-28-how-not-to-suck.jpg"
+                alt="How Not To Suck workshop flyer for the Tec-Troit Education Series"
+            />
+        </section>
+
+        <section class="workshop-layout">
+            <article class="workshop-body">
+                <p>
+                    <i>How Not To Suck</i> started as a workshop title, but the idea is bigger than one event.
+                </p>
+
+                <p>
+                    It is a practical conversation about electronic music: how to keep learning, how to make better choices, how to avoid wasting years on the wrong things, and how to build a creative practice that can survive past the first rush of inspiration.
+                </p>
+
+                <p>
+                    Augustus Williams has spent more than two decades inside Detroit electronic music as a fan, DJ, producer, live-hardware performer, A&amp;R, mentor, and Metroplex recording artist. This workshop turns that experience into something direct, useful, and honest.
+                </p>
+
+                <h2>What This Is</h2>
+
+                <p>
+                    This is not a shortcut. It is not a fame manual. It is not a gear-shopping fantasy.
+                </p>
+
+                <p>
+                    It is about the habits that actually matter: finishing music, listening better, preparing for rooms, respecting the culture, asking better questions, and staying curious long enough to improve.
+                </p>
+
+                <h2>Core Lessons</h2>
+
+                <ul>
+                    <li>Finish more music than you abandon.</li>
+                    <li>Do not confuse buying gear with building skill.</li>
+                    <li>Learn your tools before chasing new ones.</li>
+                    <li>Prepare for the room, not the fantasy version of the room.</li>
+                    <li>Respect the lineage, but do not become trapped by nostalgia.</li>
+                    <li>Ask questions. Take notes. Stay teachable.</li>
+                    <li>Do not wait until you feel ready to start doing the work.</li>
+                </ul>
+
+                <h2>Why It Matters</h2>
+
+                <p>
+                    Detroit techno survives because knowledge moves. Somebody shows somebody else how to patch a machine, how to count a phrase, how to read a room, how to listen for pressure, how to keep going.
+                </p>
+
+                <p>
+                    That exchange does not always happen on a stage. Often it happens in studios, living rooms, record shops, side conversations, late nights, and small moments that do not look historic while they are happening.
+                </p>
+
+                <p>
+                    The workshop is part of that tradition. It is one artist handing back what was handed to him.
+                </p>
+
+                <h2>Related Essay</h2>
+
+                <p>
+                    The deeper story behind this workshop is explored in the Field Notes essay
+                    <a href="field-notes-from-the-works-to-the-workshop.html">
+                        From The Works to the Workshop
+                    </a>.
+                </p>
+            </article>
+
+            <aside class="workshop-aside">
+                <h2>Workshop Details</h2>
+
+                <p>
+                    <b>How Not To Suck</b><br />
+                    Tec-Troit Education Series<br />
+                    Sunday, June 28, 2026<br />
+                    4:00 PM to 5:00 PM<br />
+                    1751 Taylor St, Detroit
+                </p>
+
+                <p>
+                    <a
+                        href="https://www.facebook.com/share/187tqxwymq/"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Event Details →
+                    </a>
+                </p>
+            </aside>
+        </section>
+
+        <section class="workshop-cards">
+            <h2 class="section-title">Workshop Themes</h2>
+
+            <div class="workshop-card-grid">
+                <article class="workshop-card">
+                    <h3>Creative Discipline</h3>
+                    <p>
+                        Finishing tracks, building habits, and learning how to keep moving when inspiration gets unreliable.
+                    </p>
+                </article>
+
+                <article class="workshop-card">
+                    <h3>Gear Reality</h3>
+                    <p>
+                        What matters, what does not, what to buy later, and why tools only become useful after you learn them.
+                    </p>
+                </article>
+
+                <article class="workshop-card">
+                    <h3>Live Performance</h3>
+                    <p>
+                        DJ sets, hybrid sets, live hardware, preparation, risk, recovery, and reading the room.
+                    </p>
+                </article>
+
+                <article class="workshop-card">
+                    <h3>Detroit Context</h3>
+                    <p>
+                        Respecting lineage without freezing it in amber. Learning where the music came from while still building forward.
+                    </p>
+                </article>
+
+                <article class="workshop-card">
+                    <h3>Releasing Music</h3>
+                    <p>
+                        Labels, self-release, promotion, patience, and thinking beyond the first upload.
+                    </p>
+                </article>
+
+                <article class="workshop-card">
+                    <h3>Passing It Forward</h3>
+                    <p>
+                        The culture grows when knowledge moves from one generation to the next instead of being locked away.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
+            <p class="footer-text">© 2026. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

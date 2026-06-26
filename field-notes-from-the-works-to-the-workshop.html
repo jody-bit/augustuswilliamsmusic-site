@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>From The Works to the Workshop — Augustus Williams</title>
+    <meta
+        name="description"
+        content="Augustus Williams reflects on Detroit dance floors, The Works, mentorship, live hardware, and the Tec-Troit workshop How Not To Suck."
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .field-note-page {
+            background: var(--bg);
+        }
+
+        .field-note-hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .field-note-kicker {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+        }
+
+        .field-note-title {
+            max-width: 980px;
+            font-size: clamp(2.25rem, 7vw, 5.8rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            margin-bottom: 1.25rem;
+        }
+
+        .field-note-dek {
+            max-width: 760px;
+            color: var(--gray-light);
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+        }
+
+        .field-note-meta {
+            font-family: var(--font-mono);
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+        }
+
+        .field-note-cover {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(1.25rem, 4vw, 3rem);
+        }
+
+        .field-note-cover img {
+            width: 100%;
+            height: clamp(360px, 58vw, 720px);
+            object-fit: cover;
+            object-position: center 38%;
+            display: block;
+            border: 1px solid var(--gray-mid);
+        }
+
+        .field-note-layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+            display: grid;
+            grid-template-columns: minmax(0, 760px) minmax(240px, 1fr);
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: start;
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .field-note-body p {
+            color: rgba(245, 241, 235, 0.9);
+            font-size: 1.04rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .field-note-body a,
+        .field-note-aside a {
+            color: var(--accent);
+        }
+
+        .field-note-aside {
+            position: sticky;
+            top: 6rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .field-note-aside h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .field-note-aside p {
+            color: var(--gray-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .field-note-gallery {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 3rem) clamp(5rem, 8vw, 7rem);
+        }
+
+        .field-note-gallery-header {
+            border-top: 1px solid var(--gray-mid);
+            padding-top: clamp(2rem, 5vw, 4rem);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .field-note-gallery-header h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        .field-note-gallery-header p {
+            max-width: 720px;
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        .field-note-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .field-note-gallery figure {
+            margin: 0;
+            border: 1px solid var(--gray-mid);
+            background: rgba(245, 241, 235, 0.02);
+        }
+
+        .field-note-gallery img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .field-note-gallery figcaption {
+            padding: 0.75rem;
+            color: var(--gray-light);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 900px) {
+            .field-note-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .field-note-aside {
+                position: static;
+            }
+
+            .field-note-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .field-note-cover img {
+                height: clamp(280px, 70vw, 520px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .field-note-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="field-note-page">
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Augustus Williams</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shows.html">Live</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="field-notes.html" aria-current="page">Field Notes</a></li>
+                <li><a href="index.html#about">Bio</a></li>
+                <li><a href="index.html#archive">Archive</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <header class="field-note-hero">
+            <p class="field-note-kicker">Field Notes / Detroit / Mentorship</p>
+
+            <h1 class="field-note-title">From The Works to the Workshop</h1>
+
+            <p class="field-note-dek">
+                The New York Times says Detroit is the last city that still knows how to dance. They’re right, and here’s the part I’d add.
+            </p>
+
+            <p class="field-note-meta">By Augustus Williams · June 2026</p>
+        </header>
+
+        <section class="field-note-cover">
+            <img
+                src="assets/field-notes/works-workshop-04-dj.jpg"
+                alt="Augustus Williams DJing with projected visuals"
+            />
+        </section>
+
+        <section class="field-note-layout">
+            <article class="field-note-body">
+                <p>
+                    The New York Times says Detroit might be the last city that still knows how to dance. I read it twice. They’re not wrong.
+                </p>
+
+                <p>
+                    I’ve been in this city’s electronic music for over twenty years now — a fan first, then a DJ, a producer, a hardware guy, A&amp;R, and these days I guess I’m one of the people younger artists come to ask questions. I played The Works from around 2007 until it closed. I’ve watched a few generations come through. So when somebody writes that on a Detroit dance floor the age and the race and the money all just kind of disappear — yeah. That’s real. I watched it happen for years. Elders next to twenty-year-olds. Gay, straight, city, suburb, no strict lines, no separate rooms. It was a techno bar, and that was the whole deal. Nobody made it weird. Nobody was performing. That’s still the hardest thing to explain to somebody who’s never stood in it.
+                </p>
+
+                <p>
+                    But I’d add one thing.
+                </p>
+
+                <p>
+                    The dance floor wasn’t where the story started. It was where you could finally see it.
+                </p>
+
+                <p>
+                    Before anybody ever walked through the door at The Works, somebody taught somebody. That’s the part that doesn’t make the article, because it doesn’t happen on the floor. It happens in somebody’s living room, over a drum machine, at three in the morning.
+                </p>
+
+                <p>
+                    The first person who really took me serious was a guy named Michael Brickner — Cos Explore, if you knew him. He’d come hang out, give me pointers, answer my dumb questions, just be a friend about it. He was to me exactly what I try to be to the younger cats now. I haven’t seen him in years. If I could find him I’d give him the biggest hug of his life, and he probably has no idea what he did for me. That’s how it works here. The people who change your whole direction usually don’t know they did it.
+                </p>
+
+                <p>
+                    People ask me what it was like playing The Works. They want the building, the famous nights, the legendary DJs. What I remember is the conversations. People putting records in my hand. People answering questions. I remember being so nervous in my early sets that I literally couldn’t look up — I’d cut the crowd off at the waist and just stare at the floor, because to me it was never about them watching me, it was about them hearing what I put on. I didn’t really start looking up at people until Movement, honestly. Took me years.
+                </p>
+
+                <p>
+                    I carried Korgs and turntables and crates into clubs all over this city. Some nights vinyl, some nights hardware, some nights both. I never wanted you to know which. Still don’t — that’s why I won’t put “live” next to my name. The second you tell people what you’re gonna do, they show up already knowing. I’d rather you walk in going, “okay, what’s he doing tonight?” Just show up. Let me surprise you.
+                </p>
+
+                <p>
+                    For a stretch I ran a live duo called Red Pill / Blue Pill — me on the blue Korg, my guy Brian Scott on the red one. That one started kind of by accident. The friend I first did it with couldn’t anymore, and people still wanted the act, and an act’s not an act with only one of me. That’s where a lot of the live thing came from for me.
+                </p>
+
+                <p>
+                    Subdivision was huge for my development. Scott and Steven gave me my first record — which had been a goal of mine for years — and then put me on bills with high-caliber artists for the better part of a decade. I did A&amp;R for them too, so everything that came through, I had to vet it first. They let me do what I actually wanted to do musically. I didn’t really have that kind of freedom until them.
+                </p>
+
+                <p>
+                    When The Works finally closed, I got to be there for the end of it. New Year’s, me and Tech Militia in the back, Subdivision up front. Somebody called it a mullet. It was. It was also one of the most surreal nights of my life. I hated to see the place go. I’ve still got one of the last sets ever recorded there sitting on my SoundCloud.
+                </p>
+
+                <p>
+                    Here’s where I’ve ended up. I’m Detroit techno’s third wave. Pretty much everything I know got handed to me by people who came before and didn’t hoard it. Now I’m the one getting the questions I used to ask. So I try to pass it the same way it got passed to me.
+                </p>
+
+                <p>
+                    That’s why Tec-Troit matters to me. It’s free, it’s volunteer-run, and the whole point is people teaching people instead of gatekeeping. On Sunday, June 28, from 4 to 5 p.m., I’m leading a workshop called <i>How Not To Suck: 20+ Years of Making Electronic Music</i>. The title gets a laugh. I mean it, though. I’ve bought the wrong gear, chased the wrong rooms, wasted time, learned damn near everything the hard way. I’ve also had people generous enough to catch me before I made the bigger mistakes. The workshop is me trying to hand some of that back. It’s not about shortcuts, and it’s not about getting famous. It’s the boring stuff — discipline, preparation, staying curious, not quitting — the habits that keep you growing long after the new wears off.
+                </p>
+
+                <p>
+                    So the Times is right. Detroit still knows how to dance.
+                </p>
+
+                <p>
+                    I’d just say it a little different.
+                </p>
+
+                <p>
+                    Detroit still knows how to teach.
+                </p>
+
+                <p>
+                    The dance floor is where you see the culture. The teaching is what keeps it breathing. And if we do this right, the kids coming up will take what we gave them, build something we haven’t even thought of yet, and hand it down all over again.
+                </p>
+
+                <p>
+                    Reference:
+                    <a
+                        href="https://www.nytimes.com/2026/06/13/opinion/detroit-dance-floor-music-dj.html"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        The New York Times opinion piece on Detroit dance floors
+                    </a>
+                </p>
+            </article>
+
+            <aside class="field-note-aside">
+                <h2>Related Workshop</h2>
+
+                <p>
+                    <b>How Not To Suck</b><br />
+                    Tec-Troit Education Series<br />
+                    Sunday, June 28, 2026 · 4:00 PM<br />
+                    1751 Taylor St, Detroit
+                </p>
+
+                <p>
+                    <a
+                        href="field-notes-how-not-to-suck.html"
+                    >
+                        Read Workshop Note →
+                    </a>
+                </p>
+            </aside>
+        </section>
+
+        <section class="field-note-gallery" aria-label="Article image gallery">
+            <div class="field-note-gallery-header">
+                <h2 class="section-title">Image Archive</h2>
+
+                <p>
+                    A visual trail from records and early sets to live hardware, community rooms, and Detroit dance floors.
+                </p>
+            </div>
+
+            <div class="field-note-gallery-grid">
+                <figure>
+                    <img src="assets/field-notes/works-workshop-01-record.jpg" alt="Signed Metroplex record" />
+                    <figcaption>Signed Metroplex record</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-02-the-works-2007.jpg" alt="Early photo of Augustus Williams at the decks in 2007" />
+                    <figcaption>The Works era, 2007</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-03-hardware.jpg" alt="Live hardware setup on an outdoor stage" />
+                    <figcaption>Live hardware setup</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-04-dj.jpg" alt="Augustus Williams DJing with colorful projected visuals" />
+                    <figcaption>Detroit DJ set</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-05-subdivision.jpg" alt="Augustus Williams working with Subdivision collaborators" />
+                    <figcaption>Subdivision era</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-06-studio.jpg" alt="Studio session with hardware and laptops" />
+                    <figcaption>Studio session</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-07-live.jpg" alt="Augustus Williams performing in a dark club with DJ equipment" />
+                    <figcaption>Live club pressure</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-08-paid-in-detroit.jpg" alt="Augustus Williams performing with green Paid In Detroit visuals" />
+                    <figcaption>Paid In Detroit visuals</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-09-paid-in-detroit-blue.jpg" alt="Augustus Williams performing with blue Paid In Detroit visuals" />
+                    <figcaption>Paid In Detroit, blue room</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="assets/field-notes/works-workshop-10-machine.jpg" alt="Artist holding a Dmology RXM drum machine" />
+                    <figcaption>Machine culture</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
+            <p class="footer-text">© 2026. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
