@@ -4,228 +4,245 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Augustus Williams — Detroit Techno</title>
+    <title>Augustus Williams — Detroit Electronic Artist</title>
+
     <meta
         name="description"
-        content="Augustus Williams is a Detroit techno artist, DJ, live-hardware performer, and Metroplex recording artist signed by Juan Atkins."
+        content="Augustus Williams is a Detroit electronic artist, DJ, live-hardware performer, and Metroplex recording artist."
     />
 
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <meta name="theme-color" content="#000000" />
+
     <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /*
+         * Hero CTA spacing
+         * Included here so the buttons remain properly spaced
+         * even if the existing styles.css contains older rules.
+         */
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.75rem;
+            margin-top: 2rem;
+        }
+
+        .hero-cta .signal-button,
+        .hero-cta .archive-link {
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            .hero-cta {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="nav">
+    <nav class="nav" aria-label="Primary navigation">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">Augustus Williams</a>
+            <a href="index.html" class="nav-logo">
+                Augustus Williams
+            </a>
 
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shows.html">Live</a></li>
-                <li><a href="releases.html">Releases</a></li>
-                <li><a href="field-notes.html">Field Notes</a></li>
-                <li><a href="index.html#about">Bio</a></li>
-                <li><a href="index.html#archive">Archive</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li>
+                    <a href="index.html" aria-current="page">Home</a>
+                </li>
+
+                <li>
+                    <a href="shows.html">Live</a>
+                </li>
+
+                <li>
+                    <a href="releases.html">Releases</a>
+                </li>
+
+                <li>
+                    <a href="#about">Bio</a>
+                </li>
+
+                <li>
+                    <a href="#archive">Archive</a>
+                </li>
+
+                <li>
+                    <a href="#sessions">Sessions</a>
+                </li>
+
+                <li>
+                    <a href="#signals">Affiliations</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <main>
+        <!-- ======================================================
+             HERO
+             ====================================================== -->
+
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="hero-name">Augustus Williams</span>
+                    <span class="hero-name">
+                        Augustus Williams
+                    </span>
                 </h1>
 
-                <p class="hero-subtitle">Detroit Techno / Live Hardware + DJ</p>
-                <div class="hero-location">Detroit, MI</div>
+                <p class="hero-subtitle">
+                    DJ + Hardware + Live Sequencing
+                </p>
+
+                <div class="hero-location">
+                    Detroit, MI
+                </div>
 
                 <p class="hero-copy">
-                    Metroplex recording artist signed by Juan Atkins. Detroit live-hardware techno, DJ sets, hybrid sets, and machine-built pressure for the floor.
+                    Metroplex recording artist signed by Juan Atkins.
+                    DJ sets, hybrid performances, live hardware, and
+                    machine-built pressure designed for the dance floor.
                 </p>
 
                 <div class="hero-cta">
                     <a
-                        href="https://augustus-williams.kit.com/8597e8cab7"
+                        href="releases.html"
                         class="signal-button"
-                        target="_blank"
-                        rel="noreferrer noopener"
                     >
-                        Join the Detroit Techno Signal
+                        Explore Releases →
                     </a>
 
-                    <a href="shows.html" class="archive-link">
-                        View Live Dates →
+                    <a
+                        href="#sessions"
+                        class="archive-link"
+                    >
+                        Watch + Listen →
                     </a>
                 </div>
             </div>
 
             <div class="hero-image">
-                <img src="assets/hero.jpg" alt="Augustus Williams portrait" />
+                <img
+                    src="assets/hero.jpg"
+                    alt="Augustus Williams performing electronic music"
+                />
             </div>
         </section>
 
-        <section id="live" class="upcoming-shows">
-            <h2 class="section-title">Live / Upcoming</h2>
-
-            <div class="shows-grid">
-                <article class="show-card">
-                    <img
-                        src="assets/show-2026-blissfest.jpg"
-                        alt="Blissfest 2026 Silent Disco lineup flyer"
-                        class="show-flyer"
-                    />
-
-                    <div class="show-info">
-                        <span class="show-date">Fri, July 10, 2026</span>
-
-                        <h3>Blissfest 2026 · Silent Disco</h3>
-
-                        <p class="show-venue">Blissfest, Harbor Springs, MI</p>
-
-                        <p>
-                            Live set · 11:00 PM–3:00 AM · curated Detroit-techno Silent Disco.
-                        </p>
-
-                        <div class="show-actions">
-                            <a
-                                href="https://events.leapevents.com/tickets/blissfest2026"
-                                class="show-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Tickets →
-                            </a>
-
-                            <a
-                                href="https://blissfest.org/pages/silent-disco"
-                                class="show-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Info →
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <div class="section-portal">
-                <a href="shows.html" class="archive-link">All shows →</a>
-            </div>
-        </section>
-
-        <section class="sessions">
-            <h2 class="section-title">Recent Highlights</h2>
-
-            <p class="section-copy">
-                Selected recent appearances, community events, and education moments from the Augustus Williams archive.
-            </p>
-
-            <div class="sessions-grid">
-                <div class="session-card">
-                    <div class="session-header">
-                        <span class="session-date">June 2026</span>
-                        <span class="session-format">Workshop</span>
-                    </div>
-
-                    <h3>How Not To Suck</h3>
-
-                    <p>
-                        Tec-Troit Education Series workshop on creative discipline, live hardware, gear decisions, and electronic music development.
-                    </p>
-
-                    <a href="shows.html#highlights" class="session-link">
-                        View Highlight →
-                    </a>
-                </div>
-
-                <div class="session-card">
-                    <div class="session-header">
-                        <span class="session-date">June 2026</span>
-                        <span class="session-format">Community</span>
-                    </div>
-
-                    <h3>The Rhythm Reel: Black Music on Film</h3>
-
-                    <p>
-                        Campfire Films × Roar Brewing Company outdoor celebration of Black music, film, and community.
-                    </p>
-
-                    <a href="shows.html#highlights" class="session-link">
-                        View Highlight →
-                    </a>
-                </div>
-
-                <div class="session-card">
-                    <div class="session-header">
-                        <span class="session-date">June 2026</span>
-                        <span class="session-format">Live Set</span>
-                    </div>
-
-                    <h3>Audiation welcomes Augustus Williams</h3>
-
-                    <p>
-                        Headline set at The Loading Dock in Austin, TX on a Funktion-One system.
-                    </p>
-
-                    <a href="shows.html#highlights" class="session-link">
-                        View Highlight →
-                    </a>
-                </div>
-            </div>
-        </section>
+        <!-- ======================================================
+             BIOGRAPHY
+             ====================================================== -->
 
         <section id="about" class="about">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2 class="section-title">Biography</h2>
+                    <h2 class="section-title">
+                        Biography
+                    </h2>
 
                     <p>
-                        Augustus Williams is a Detroit techno artist, DJ, and live-hardware performer with more than two decades in the city’s underground. A Metroplex recording artist signed to Juan Atkins’ foundational label, he builds floor-driven techno in real time from drum machines and sequencers, moving fluidly between DJ, hybrid, and full live-hardware sets.
+                        Augustus Williams is a Detroit electronic artist,
+                        DJ, live-hardware performer, and Metroplex recording
+                        artist signed to Juan Atkins’ foundational label.
+                        With more than two decades in the city’s underground
+                        electronic-music community, he moves fluidly between
+                        DJ sets, hybrid performances, and full live-hardware
+                        sets.
                     </p>
 
                     <p>
-                        His machine-driven sound has carried him from Detroit warehouses to Movement Festival stages and Detroit-Berlin cultural exchange projects, with a focus on rhythm, pressure, discipline, and the living architecture of the dance floor.
+                        Using drum machines, synthesizers, sequencers, and
+                        live arrangement, Augustus constructs floor-driven
+                        performances in real time. His work emphasizes rhythm,
+                        pressure, discipline, improvisation, and the evolving
+                        relationship between performer, machines, and dance
+                        floor.
                     </p>
 
                     <p>
-                        <b>Metroplex recording artist, signed by Juan Atkins.</b>
+                        His career includes Movement Festival appearances,
+                        Detroit-Berlin cultural-exchange projects, releases
+                        through Metroplex Records, membership in Detroit
+                        Techno Militia, and long-standing involvement with
+                        Techno Snob.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Metroplex recording artist, signed by Juan Atkins.
+                        </strong>
                     </p>
                 </div>
 
                 <div class="about-meta">
                     <div class="meta-block">
-                        <h3>Format</h3>
+                        <h3>Performance Formats</h3>
+
                         <ul>
                             <li>DJ Set</li>
                             <li>Hybrid Set</li>
                             <li>Live Hardware Set</li>
-                            <li>Workshops / Education</li>
+                            <li>Live Sequencing</li>
+                            <li>Extended Club Set</li>
                         </ul>
                     </div>
 
                     <div class="meta-block">
                         <h3>Energy</h3>
+
                         <p>
-                            Driving and hypnotic. Built for the floor: tension, release, pressure.
+                            Driving and hypnotic. Built for the floor:
+                            tension, release, rhythm, and pressure.
                         </p>
+                    </div>
+
+                    <div class="meta-block">
+                        <h3>Affiliations</h3>
+
+                        <ul>
+                            <li>Metroplex Records</li>
+                            <li>Detroit Techno Militia</li>
+                            <li>Techno Snob</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ======================================================
+             SELECTED RELEASE
+             ====================================================== -->
+
         <section class="releases">
-            <h2 class="section-title">Selected Releases</h2>
+            <h2 class="section-title">
+                Selected Release
+            </h2>
 
             <p class="section-copy">
-                Catalog entries, remixes, and label releases from the Augustus Williams archive.
+                Selected catalog entries, remixes, and label releases
+                from the Augustus Williams archive.
             </p>
 
             <div class="release-feature-card metroplex-release-card">
                 <div class="release-logo-block">
                     <img
-                        src="./assets/metroplex_logo_offwhite_transparent.png"
+                        src="assets/metroplex_logo_offwhite_transparent.png"
                         alt="Metroplex Records logo"
                         class="metroplex-logo"
                     />
@@ -234,10 +251,14 @@
                 <div class="release-copy-block">
                     <h3>Increaser EP</h3>
 
-                    <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
+                    <p class="release-meta">
+                        Augustus Williams · Metroplex Records · 2023
+                    </p>
 
                     <p>
-                        Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.
+                        Official Metroplex release featuring
+                        “The Hook-Up,” “Dark T,” “Imagination,”
+                        and “Increaser.”
                     </p>
 
                     <div class="release-actions">
@@ -250,7 +271,10 @@
                             Listen on Bandcamp →
                         </a>
 
-                        <a href="releases.html" class="release-link">
+                        <a
+                            href="releases.html"
+                            class="release-link"
+                        >
                             Explore Releases →
                         </a>
                     </div>
@@ -258,11 +282,19 @@
             </div>
         </section>
 
+        <!-- ======================================================
+             PRESS ARCHIVE
+             ====================================================== -->
+
         <section id="archive" class="archive">
-            <h2 class="section-title">Press Archive</h2>
+            <h2 class="section-title">
+                Press Archive
+            </h2>
 
             <p class="section-copy">
-                Press photography, technical specifications, performance media, downloadable materials, and current booking information.
+                Press photography, biographies, technical specifications,
+                performance media, downloadable promotional materials,
+                and booking information.
             </p>
 
             <div class="archive-portal">
@@ -277,19 +309,34 @@
             </div>
         </section>
 
+        <!-- ======================================================
+             RECORDED SESSIONS
+             ====================================================== -->
+
         <section id="sessions" class="sessions">
-            <h2 class="section-title">Recorded Sessions</h2>
+            <h2 class="section-title">
+                Recorded Sessions
+            </h2>
+
+            <p class="section-copy">
+                Selected DJ mixes, live performances, residencies,
+                collaborations, and remixes from the Augustus Williams archive.
+            </p>
 
             <div class="sessions-grid">
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2025</span>
                         <span class="session-format">DJ Mix</span>
                     </div>
 
-                    <h3>Augustus Williams at Movement Detroit 2025 DJ Mix</h3>
+                    <h3>
+                        Augustus Williams at Movement Detroit 2025
+                    </h3>
 
-                    <p>Official DJ mix from Movement Detroit 2025.</p>
+                    <p>
+                        Official DJ mix from Movement Detroit 2025.
+                    </p>
 
                     <a
                         href="https://music.apple.com/us/album/augustus-williams-at-movement-detroit-2025-dj-mix/1829935543"
@@ -299,17 +346,21 @@
                     >
                         Listen Now →
                     </a>
-                </div>
+                </article>
 
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2024</span>
                         <span class="session-format">DJ Mix</span>
                     </div>
 
-                    <h3>Augustus Williams at Movement Detroit 2024 DJ Mix</h3>
+                    <h3>
+                        Augustus Williams at Movement Detroit 2024
+                    </h3>
 
-                    <p>Official DJ mix from Movement Detroit 2024.</p>
+                    <p>
+                        Official DJ mix from Movement Detroit 2024.
+                    </p>
 
                     <a
                         href="https://music.apple.com/us/album/augustus-williams-at-movement-detroit-2024-dj-mix/1759039893"
@@ -319,18 +370,22 @@
                     >
                         Listen Now →
                     </a>
-                </div>
+                </article>
 
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2023</span>
                         <span class="session-format">Residency</span>
                     </div>
 
-                    <h3>Residency Detroit x Pop-Kultur 2023</h3>
+                    <h3>
+                        Residency Detroit × Pop-Kultur 2023
+                    </h3>
 
                     <p>
-                        Detroit-Berlin co-creation residency set with Souci, blending raw techno and experimental club textures.
+                        Detroit-Berlin co-creation residency performance
+                        with Souci, combining techno and experimental
+                        club textures.
                     </p>
 
                     <a
@@ -341,18 +396,21 @@
                     >
                         Watch Now →
                     </a>
-                </div>
+                </article>
 
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2022</span>
                         <span class="session-format">Live Set</span>
                     </div>
 
-                    <h3>Movement Liveset · May 28 2022</h3>
+                    <h3>
+                        Movement Live Set · May 28, 2022
+                    </h3>
 
                     <p>
-                        Full Movement live set from May 28, 2022 with driving techno rhythms and peak-time intensity.
+                        Full Movement live set featuring driving rhythms,
+                        hardware sequencing, and peak-time intensity.
                     </p>
 
                     <a
@@ -363,18 +421,21 @@
                     >
                         Watch Now →
                     </a>
-                </div>
+                </article>
 
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2021</span>
                         <span class="session-format">Radio Mix</span>
                     </div>
 
-                    <h3>Bassment Guest Mix · Augustus Williams</h3>
+                    <h3>
+                        Bassment Guest Mix · Augustus Williams
+                    </h3>
 
                     <p>
-                        Deep underground guest mix recorded for Bassment, loaded with raw Detroit-inspired grooves.
+                        Underground guest mix recorded for Bassment,
+                        built around raw, rhythm-driven electronic music.
                     </p>
 
                     <a
@@ -385,18 +446,21 @@
                     >
                         Watch Now →
                     </a>
-                </div>
+                </article>
 
-                <div class="session-card">
+                <article class="session-card">
                     <div class="session-header">
                         <span class="session-date">2015</span>
                         <span class="session-format">Remix</span>
                     </div>
 
-                    <h3>Kero · TCKR Concept · Augustus Williams Remix</h3>
+                    <h3>
+                        Kero · TCKR Concept · Augustus Williams Remix
+                    </h3>
 
                     <p>
-                        Techno remix of Kero’s TCKR Concept. Early machine-driven, rhythm-first Detroit sound.
+                        Machine-driven, rhythm-first remix of
+                        Kero’s “TCKR Concept.”
                     </p>
 
                     <a
@@ -407,23 +471,71 @@
                     >
                         Watch Now →
                     </a>
-                </div>
+                </article>
             </div>
         </section>
 
+        <!-- ======================================================
+             AFFILIATIONS
+             ====================================================== -->
+
         <section id="signals" class="signals">
-            <h2 class="section-title">Signals</h2>
+            <h2 class="section-title">
+                Affiliations
+            </h2>
 
             <p class="section-copy">
-                Aligned projects, collaborators, labels, collectives, and cultural nodes connected to the Augustus Williams ecosystem.
+                Labels, collectives, platforms, and cultural organizations
+                connected to the Augustus Williams catalog and career.
             </p>
 
             <div class="signals-grid">
-                <div class="signal-card">
+                <article class="signal-card">
+                    <h3>Metroplex Records</h3>
+
+                    <p>
+                        Foundational Detroit techno label established by
+                        Juan Atkins and home of the Augustus Williams
+                        “Increaser EP.”
+                    </p>
+
+                    <a
+                        href="https://metroplexrecords.bandcamp.com/album/increaser-ep"
+                        class="signal-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Listen →
+                    </a>
+                </article>
+
+                <article class="signal-card">
+                    <h3>Detroit Techno Militia</h3>
+
+                    <p>
+                        Detroit electronic-music collective dedicated to
+                        performance, production, collaboration, and the
+                        international advancement of Detroit artists.
+                    </p>
+
+                    <a
+                        href="https://www.detroittechnomilitia.com/"
+                        class="signal-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Visit →
+                    </a>
+                </article>
+
+                <article class="signal-card">
                     <h3>Techno Snob</h3>
 
                     <p>
-                        Detroit techno platform and cultural hub. Augustus has served as Artist Relations lead since its 2012 inception, bridging the next generation to the Detroit techno sound.
+                        Detroit techno platform and cultural community.
+                        Augustus has contributed artist relations,
+                        mentorship, visibility, and creative support
+                        throughout its development.
                     </p>
 
                     <a
@@ -434,59 +546,110 @@
                     >
                         Visit →
                     </a>
-                </div>
+                </article>
 
-                <div class="signal-card">
-                    <h3>Labels</h3>
+                <article class="signal-card">
+                    <h3>Release Archive</h3>
 
                     <p>
-                        Record labels and imprints featuring Augustus Williams’ releases and remixes.
+                        Explore label releases, remixes, digital catalog
+                        entries, and archived recordings.
                     </p>
 
-                    <a href="releases.html" class="signal-link">
+                    <a
+                        href="releases.html"
+                        class="signal-link"
+                    >
                         Discover →
                     </a>
-                </div>
+                </article>
             </div>
         </section>
 
+        <!-- ======================================================
+             CONTACT
+             ====================================================== -->
+
         <section id="contact" class="contact">
-            <h2 class="section-title">Live Channels</h2>
+            <h2 class="section-title">
+                Contact
+            </h2>
 
             <div class="contact-grid">
                 <div class="contact-channel">
-                    <h3>Booking</h3>
+                    <h3>Booking + Inquiries</h3>
 
-                    <a href="mailto:booking@augustuswilliamsmusic.com" class="contact-link">
-                        booking@augustuswilliamsmusic.com
+                    <a
+                        href="mailto:gustodetroit@gmail.com"
+                        class="contact-link"
+                    >
+                        gustodetroit@gmail.com
                     </a>
                 </div>
 
                 <div class="contact-channel">
                     <h3>Streaming</h3>
 
-                    <a href="https://bandcamp.com/gusto313" class="contact-link" target="_blank" rel="noreferrer noopener">Bandcamp</a>
-                    <a href="https://soundcloud.com/augustus-williams-50140506" class="contact-link" target="_blank" rel="noreferrer noopener">SoundCloud</a>
-                    <a href="https://music.apple.com/us/artist/augustus-williams/918324441" class="contact-link" target="_blank" rel="noreferrer noopener">Apple Music</a>
+                    <a
+                        href="https://bandcamp.com/gusto313"
+                        class="contact-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Bandcamp
+                    </a>
+
+                    <a
+                        href="https://soundcloud.com/augustus-williams-50140506"
+                        class="contact-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        SoundCloud
+                    </a>
+
+                    <a
+                        href="https://music.apple.com/us/artist/augustus-williams/918324441"
+                        class="contact-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Apple Music
+                    </a>
                 </div>
 
                 <div class="contact-channel">
                     <h3>Social</h3>
 
-                    <a href="https://www.instagram.com/gustodetroit/" class="contact-link" target="_blank" rel="noreferrer noopener">Instagram</a>
-                    <a href="https://www.tiktok.com/@gustodetroit" class="contact-link" target="_blank" rel="noreferrer noopener">TikTok</a>
-                </div>
-
-                <div class="contact-channel">
-                    <h3>Signal</h3>
-
                     <a
-                        href="https://augustus-williams.kit.com/8597e8cab7"
+                        href="https://www.instagram.com/gustodetroit/"
                         class="contact-link"
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        Join the Detroit Techno Signal
+                        Instagram
+                    </a>
+
+                    <a
+                        href="https://www.tiktok.com/@gustodetroit"
+                        class="contact-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        TikTok
+                    </a>
+                </div>
+
+                <div class="contact-channel">
+                    <h3>Press Materials</h3>
+
+                    <a
+                        href="https://drive.google.com/drive/folders/1sUpPDtW-M7jzXUWhLpzLHjWbYxRapx0u?usp=sharing"
+                        class="contact-link"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Download Press Kit
                     </a>
                 </div>
             </div>
@@ -495,8 +658,14 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
-            <p class="footer-text">© 2026. All rights reserved.</p>
+            <p class="footer-text">
+                Augustus Williams
+                <span class="accent">Detroit, MI</span>
+            </p>
+
+            <p class="footer-text">
+                © Augustus Williams. All rights reserved.
+            </p>
         </div>
     </footer>
 </body>

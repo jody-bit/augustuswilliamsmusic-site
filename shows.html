@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Augustus Williams — Live / Shows</title>
+    <title>Augustus Williams — Live Performance Archive</title>
+
     <meta
         name="description"
-        content="Augustus Williams upcoming live techno shows, tour dates, and selected highlights."
+        content="Selected live performances, festival appearances, hardware sets, and career highlights from Detroit electronic artist Augustus Williams."
     />
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -17,23 +18,30 @@
     <meta name="theme-color" content="#000000" />
 
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
 
     <style>
-        .releases-page {
+        /* =========================================================
+           LIVE PERFORMANCE ARCHIVE
+           ========================================================= */
+
+        .live-page {
             background: var(--bg);
         }
 
-        .releases-page .site-nav {
+        /* NAVIGATION */
+
+        .live-page .site-nav {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: rgba(10, 10, 10, 0.96);
             border-bottom: 1px solid rgba(245, 241, 235, 0.12);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .releases-page .site-nav-inner {
+        .live-page .site-nav-inner {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
@@ -43,7 +51,7 @@
             gap: 1rem;
         }
 
-        .releases-page .site-nav-brand {
+        .live-page .site-nav-brand {
             font-family: var(--font-mono);
             font-size: 0.82rem;
             letter-spacing: 0.14em;
@@ -52,15 +60,21 @@
             border-bottom: none;
         }
 
-        .releases-page .site-nav-links {
+        .live-page .site-nav-brand:hover {
+            color: var(--accent);
+        }
+
+        .live-page .site-nav-links {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 1rem 1.5rem;
+            margin: 0;
+            padding: 0;
             list-style: none;
         }
 
-        .releases-page .site-nav-links a {
+        .live-page .site-nav-links a {
             font-family: var(--font-mono);
             font-size: 0.78rem;
             text-transform: uppercase;
@@ -69,90 +83,142 @@
             border-bottom: none;
         }
 
-        .releases-page .site-nav-links a:hover,
-        .releases-page .site-nav-links a[aria-current="page"] {
+        .live-page .site-nav-links a:hover,
+        .live-page .site-nav-links a[aria-current="page"] {
             color: var(--accent);
         }
 
-        .releases-page .releases-banner {
+        /* HERO */
+
+        .live-page .live-banner {
             position: relative;
+            width: 100%;
             max-width: 1400px;
+            min-height: clamp(190px, 26vw, 330px);
             margin: 0 auto;
-            min-height: clamp(140px, 18vh, 220px);
+            padding: 0;
             overflow: hidden;
             background: #000;
-            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
-            padding: 0;
             border-top: none;
+            border-bottom: 1px solid rgba(245, 241, 235, 0.12);
         }
 
-        .releases-page .releases-banner img {
+        .live-page .live-banner img {
+            display: block;
             width: 100%;
             height: 100%;
-            min-height: clamp(140px, 18vh, 220px);
-            display: block;
+            min-height: clamp(190px, 26vw, 330px);
             object-fit: cover;
             object-position: center 52%;
             opacity: 0.78;
         }
 
-        .releases-page .releases-banner::after {
+        .live-page .live-banner::after {
             content: "";
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.66) 34%, rgba(0, 0, 0, 0.24) 66%, rgba(0, 0, 0, 0.3) 100%),
-                linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.38) 100%);
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    rgba(0, 0, 0, 0.72) 35%,
+                    rgba(0, 0, 0, 0.28) 68%,
+                    rgba(0, 0, 0, 0.34) 100%
+                ),
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.12) 0%,
+                    rgba(0, 0, 0, 0.46) 100%
+                );
             pointer-events: none;
         }
 
-        .releases-page .releases-banner-content {
+        .live-page .live-banner-content {
             position: absolute;
-            left: clamp(1rem, 3vw, 2.25rem);
-            right: clamp(1rem, 3vw, 2.25rem);
-            bottom: clamp(0.9rem, 2vw, 1.4rem);
             z-index: 2;
-            max-width: 32rem;
+            left: clamp(1rem, 4vw, 3rem);
+            right: clamp(1rem, 4vw, 3rem);
+            bottom: clamp(1rem, 3vw, 2rem);
+            max-width: 40rem;
         }
 
-        .releases-page .releases-kicker {
-            margin: 0 0 0.35rem;
+        .live-page .live-kicker {
+            margin: 0 0 0.45rem;
             font-family: var(--font-mono);
             color: var(--gray-light);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             font-size: 0.72rem;
         }
 
-        .releases-page .releases-heading {
-            margin: 0 0 0.35rem;
-            font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+        .live-page .live-heading {
+            margin: 0 0 0.55rem;
+            font-size: clamp(1.9rem, 4vw, 3.3rem);
             line-height: 0.95;
             letter-spacing: -0.04em;
             color: var(--fg);
         }
 
-        .releases-page .releases-heading span {
+        .live-page .live-heading span {
             color: var(--accent);
         }
 
-        .releases-page .releases-copy {
-            max-width: 30rem;
+        .live-page .live-copy {
+            max-width: 35rem;
             margin: 0;
             color: rgba(245, 241, 235, 0.88);
-            line-height: 1.45;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            line-height: 1.5;
         }
 
-        .releases-page .releases-banner-actions {
+        .live-page .live-banner-actions {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 0.75rem 1rem;
-            margin-top: 0.75rem;
+            margin-top: 1rem;
         }
 
+        .live-page .banner-primary {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            padding: 0.65rem 0.9rem;
+            border: 1px solid var(--signal-red);
+            background: rgba(139, 46, 46, 0.12);
+            color: var(--fg);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .live-page .banner-primary:hover {
+            background: var(--signal-red);
+            color: var(--fg);
+            border-bottom-color: transparent;
+        }
+
+        .live-page .banner-secondary {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--gray-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: none;
+        }
+
+        .live-page .banner-secondary:hover {
+            color: var(--accent);
+        }
+
+        /* PRESS */
+
         .press-strip {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 3rem);
@@ -164,25 +230,25 @@
             display: flex;
             align-items: flex-start;
             gap: clamp(1rem, 3vw, 2.25rem);
-            max-width: 980px;
+            max-width: 1080px;
         }
 
         .press-strip-mark {
             flex: none;
             margin-top: 0.4rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid var(--accent);
             font-family: var(--font-mono);
             font-size: 0.7rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--accent);
-            border-left: 2px solid var(--accent);
-            padding-left: 0.75rem;
         }
 
         .press-quotes {
             position: relative;
             flex: 1;
-            min-height: 4.5em;
+            min-height: 8rem;
             margin: 0;
         }
 
@@ -201,148 +267,142 @@
 
         .press-quote-text {
             display: block;
-            font-size: clamp(1.25rem, 2.6vw, 1.85rem);
-            line-height: 1.3;
+            margin-bottom: 0.75rem;
+            font-size: clamp(1.15rem, 2.35vw, 1.7rem);
+            line-height: 1.35;
             font-style: italic;
             color: var(--fg);
-            margin-bottom: 0.6rem;
         }
 
         .press-quote-source {
-            display: block;
+            display: inline-flex;
+            width: fit-content;
             font-family: var(--font-mono);
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--accent);
+            border-bottom: 1px solid transparent;
         }
 
-        .releases-page .banner-signal {
-            display: inline-block;
-            padding: 0.65rem 0.9rem;
-            border: 1px solid var(--signal-red);
-            background: rgba(139, 46, 46, 0.12);
+        .press-quote-source:hover {
             color: var(--fg);
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            border-bottom-color: var(--accent);
         }
 
-        .releases-page .banner-signal:hover {
-            background: var(--signal-red);
-            color: var(--fg);
-            border-bottom-color: transparent;
-        }
+        /* ARCHIVE SECTION */
 
-        .releases-page .banner-scroll {
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            color: var(--gray-light);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            border-bottom: none;
-        }
-
-        .releases-page .banner-scroll:hover {
-            color: var(--accent);
-        }
-
-        .releases-page .releases-section {
+        .live-page .live-archive-section {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.25rem clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+            padding:
+                clamp(4rem, 8vw, 7rem)
+                clamp(1.25rem, 4vw, 3rem);
+            border-top: none;
         }
 
-        .shows-group {
-            margin-top: var(--spacing-xl);
+        .live-page .archive-intro {
+            max-width: 780px;
         }
 
-        .shows-group:first-of-type {
-            margin-top: var(--spacing-lg);
+        .live-page .archive-intro .section-copy {
+            margin-top: 0;
         }
 
-        .shows-upcoming-grid,
+        /* FEATURE CARDS */
+
         .flagship-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: var(--spacing-lg);
             margin-top: var(--spacing-lg);
         }
 
-        .flagship-grid.three-up {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .show-card,
         .flagship-card {
-            border: 1px solid var(--gray-mid);
-            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            min-width: 0;
             overflow: hidden;
+            border: 1px solid var(--gray-mid);
+            background: var(--bg);
+            transition: var(--transition);
         }
 
-        .show-card:hover,
         .flagship-card:hover {
             border-color: var(--accent);
         }
 
-        .show-flyer,
         .flagship-flyer {
+            display: block;
             width: 100%;
             aspect-ratio: 4 / 5;
             object-fit: cover;
-            display: block;
             border-bottom: 1px solid var(--gray-mid);
         }
 
-        .show-body,
         .flagship-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
             padding: var(--spacing-md);
         }
 
         .show-date {
             display: block;
+            margin-bottom: var(--spacing-xs);
             font-family: var(--font-mono);
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-size: 0.8rem;
-            margin-bottom: var(--spacing-xs);
         }
 
-        .show-card h3,
         .flagship-card h3 {
             margin-bottom: var(--spacing-xs);
             font-size: 1.05rem;
+            line-height: 1.35;
         }
 
         .show-venue {
             display: block;
+            margin-bottom: var(--spacing-sm);
             font-family: var(--font-mono);
             color: var(--gray-light);
             text-transform: uppercase;
             letter-spacing: 0.06em;
             font-size: 0.78rem;
-            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
         }
 
         .show-detail {
-            color: var(--gray-light);
+            flex: 1;
             margin-bottom: var(--spacing-md);
+            color: var(--gray-light);
         }
 
-        .show-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-md);
+        .flagship-body .release-link {
+            margin-top: auto;
+        }
+
+        /* ADDITIONAL APPEARANCES */
+
+        .additional-highlights {
+            margin-top: var(--spacing-xl);
+        }
+
+        .additional-highlights-title {
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-mono);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.9rem;
         }
 
         .highlights-list {
             display: grid;
             gap: 0;
-            margin-top: var(--spacing-lg);
             border-top: 1px solid var(--gray-mid);
         }
 
@@ -361,6 +421,7 @@
         }
 
         .highlight-years {
+            flex: none;
             font-family: var(--font-mono);
             color: var(--accent);
             text-transform: uppercase;
@@ -369,41 +430,85 @@
             white-space: nowrap;
         }
 
+        /* CONTACT */
+
+        .live-contact {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding:
+                clamp(3.5rem, 7vw, 6rem)
+                clamp(1.25rem, 4vw, 3rem);
+            border-top: 1px solid rgba(245, 241, 235, 0.12);
+            background: var(--gray-dark);
+        }
+
+        .live-contact-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .live-contact-copy {
+            max-width: 640px;
+        }
+
+        .live-contact-copy p {
+            margin-bottom: 0;
+            color: var(--gray-light);
+        }
+
+        .live-contact-action {
+            flex: none;
+        }
+
+        /* ACCESSIBILITY */
+
         @media (prefers-reduced-motion: reduce) {
-            .press-quote {
+            .press-quote,
+            .flagship-card {
                 transition: none;
             }
         }
 
+        /* RESPONSIVE */
+
+        @media (max-width: 1024px) {
+            .flagship-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 900px) {
-            .releases-page .site-nav-inner {
+            .live-page .site-nav-inner {
                 align-items: flex-start;
                 flex-direction: column;
             }
 
-            .shows-upcoming-grid,
-            .flagship-grid,
-            .flagship-grid.three-up {
-                grid-template-columns: 1fr;
+            .live-page .live-banner,
+            .live-page .live-banner img {
+                min-height: 235px;
             }
 
-            .releases-page .releases-banner,
-            .releases-page .releases-banner img {
-                min-height: 170px;
+            .live-page .live-banner::after {
+                background:
+                    linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.22) 0%,
+                        rgba(0, 0, 0, 0.84) 100%
+                    );
             }
 
-            .releases-page .releases-banner::after {
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.78) 100%);
-            }
-
-            .releases-page .releases-banner-content {
-                max-width: none;
+            .live-contact-inner {
+                align-items: flex-start;
+                flex-direction: column;
             }
         }
 
-        @media (max-width: 640px) {
-            .releases-page .site-nav-links {
-                gap: 0.75rem 1rem;
+        @media (max-width: 720px) {
+            .flagship-grid {
+                grid-template-columns: 1fr;
             }
 
             .press-strip-inner {
@@ -412,31 +517,63 @@
             }
 
             .press-quotes {
-                min-height: 5.5em;
-            }
-
-            .releases-page .releases-heading {
-                font-size: clamp(1.35rem, 7vw, 2rem);
+                min-height: 11rem;
             }
 
             .highlight-row {
+                align-items: flex-start;
                 flex-direction: column;
                 gap: 0.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .live-page .site-nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .live-page .site-nav-links a {
+                font-size: 0.7rem;
+            }
+
+            .live-page .live-banner,
+            .live-page .live-banner img {
+                min-height: 275px;
+            }
+
+            .live-page .live-heading {
+                font-size: clamp(1.55rem, 8vw, 2.2rem);
+            }
+
+            .live-page .live-copy {
+                max-width: 25rem;
+                font-size: 0.88rem;
+            }
+
+            .live-page .live-banner-actions {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.65rem;
+            }
+
+            .flagship-body {
+                padding: var(--spacing-md);
             }
         }
     </style>
 </head>
 
-<body class="releases-page">
-    <nav class="site-nav" aria-label="Primary">
+<body class="live-page">
+    <nav class="site-nav" aria-label="Primary navigation">
         <div class="site-nav-inner">
-            <a href="index.html" class="site-nav-brand">Augustus Williams</a>
+            <a href="index.html" class="site-nav-brand">
+                Augustus Williams
+            </a>
 
             <ul class="site-nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shows.html" aria-current="page">Live</a></li>
                 <li><a href="releases.html">Releases</a></li>
-                <li><a href="field-notes.html">Field Notes</a></li>
                 <li><a href="index.html#about">Bio</a></li>
                 <li><a href="index.html#archive">Archive</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
@@ -445,323 +582,425 @@
     </nav>
 
     <main>
-        <section class="releases-banner">
+        <!-- HERO -->
+
+        <section class="live-banner">
             <img
                 src="assets/releases-hero-banner-cropped-half-overlay.jpg"
-                alt="Augustus Williams performing live in front of a crowd"
+                alt="Augustus Williams performing live in front of an audience"
             />
 
-            <div class="releases-banner-content">
-                <p class="releases-kicker">Live / Tour Dates / Selected Highlights</p>
-
-                <h1 class="releases-heading">
-                    Augustus Williams <span>(Gusto)</span>
-                </h1>
-
-                <p class="releases-copy">
-                    Upcoming performances and selected highlights from the road.
+            <div class="live-banner-content">
+                <p class="live-kicker">
+                    DJ + Hardware + Live Sequencing
                 </p>
 
-                <div class="releases-banner-actions">
-                    <a href="#upcoming" class="banner-signal">See upcoming shows</a>
-                    <a href="#highlights" class="banner-scroll">Selected highlights ↓</a>
+                <h1 class="live-heading">
+                    Augustus Williams <span>Live</span>
+                </h1>
+
+                <p class="live-copy">
+                    Selected festival appearances, club performances,
+                    hybrid sets, hardware performances, cultural events,
+                    and career highlights.
+                </p>
+
+                <div class="live-banner-actions">
+                    <a href="#highlights" class="banner-primary">
+                        Explore Highlights
+                    </a>
+
+                    <a
+                        href="mailto:gustodetroit@gmail.com"
+                        class="banner-secondary"
+                    >
+                        Performance Inquiries →
+                    </a>
                 </div>
             </div>
         </section>
 
-        <aside class="press-strip" aria-label="Press highlights">
+        <!-- RESIDENT ADVISOR PICKS -->
+
+        <aside class="press-strip" aria-label="Resident Advisor press highlights">
             <div class="press-strip-inner">
-                <span class="press-strip-mark">Press</span>
+                <span class="press-strip-mark">RA Picks</span>
 
                 <p class="press-quotes">
                     <span class="press-quote is-active">
-                        <span class="press-quote-text">"Detroit beatmaster… radical live hardware electronics."</span>
-                        <span class="press-quote-source">Resident Advisor — RA Pick, Space &amp; Time</span>
+                        <span class="press-quote-text">
+                            “Detroit beatmaster Augustus Williams, Pittsburgh
+                            circuit freaker Ericson, TM and Chicago modular don
+                            RobotManMachine play radical live hardware electronics
+                            at Space &amp; Time.”
+                        </span>
+
+                        <a
+                            href="https://ra.co/events/2269609"
+                            class="press-quote-source"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Resident Advisor · Space &amp; Time · Chicago
+                        </a>
                     </span>
 
                     <span class="press-quote">
-                        <span class="press-quote-text">Among the night's "true reliables."</span>
-                        <span class="press-quote-source">Resident Advisor — RA Pick, Fog 18</span>
+                        <span class="press-quote-text">
+                            “Descend into the hazy, fog-shrouded depths of
+                            Detroit’s techno scene with unfiltered selections
+                            from true reliables Huey Mnemonic, BMG and
+                            Augustus Williams.”
+                        </span>
+
+                        <a
+                            href="https://ra.co/events/2402031"
+                            class="press-quote-source"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Resident Advisor · Fog 18 · Detroit
+                        </a>
                     </span>
                 </p>
             </div>
         </aside>
 
-        <section id="upcoming" class="releases-section">
-            <div class="shows-group">
-                <h2 class="section-title">Upcoming</h2>
+        <!-- SELECTED HIGHLIGHTS -->
 
-                <div class="shows-upcoming-grid">
-                    <article class="show-card">
-                        <img
-                            class="show-flyer"
-                            src="assets/show-2026-blissfest.jpg"
-                            alt="Blissfest 2026 Silent Disco lineup flyer"
-                        />
-
-                        <div class="show-body">
-                            <span class="show-date">Fri, July 10, 2026</span>
-
-                            <h3>Blissfest 2026 · Silent Disco</h3>
-
-                            <span class="show-venue">Blissfest, Harbor Springs, MI</span>
-
-                            <p class="show-detail">
-                                Live set · 11:00 PM–3:00 AM · curated Detroit-techno Silent Disco.
-                            </p>
-
-                            <div class="show-actions">
-                                <a
-                                    href="https://events.leapevents.com/tickets/blissfest2026"
-                                    class="release-link"
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                >
-                                    Tickets →
-                                </a>
-
-                                <a
-                                    href="https://blissfest.org/pages/silent-disco"
-                                    class="release-link"
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                >
-                                    Info →
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <div id="highlights" class="shows-group">
-                <h2 class="section-title">Selected Highlights</h2>
+        <section id="highlights" class="live-archive-section">
+            <div class="archive-intro">
+                <h2 class="section-title">
+                    Selected Highlights
+                </h2>
 
                 <p class="section-copy">
-                    Selected festival, label, live-hardware, community, and education appearances from the archive.
+                    A selection of festival, label, club, live-hardware,
+                    cultural, and community appearances from the
+                    Augustus Williams performance archive.
                 </p>
+            </div>
 
-                <div class="flagship-grid three-up">
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/show-2026-06-28-how-not-to-suck.jpg"
-                            alt="How Not To Suck flyer — Tec-Troit Education Series, Detroit, June 28 2026"
-                        />
+            <div class="flagship-grid">
+                <!-- MOVEMENT OPENING PARTY -->
 
-                        <div class="flagship-body">
-                            <span class="show-date">Jun 28, 2026</span>
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/past-movement-opening-2026.jpg"
+                        alt="Official Movement Opening Party flyer at Lincoln Factory in Detroit"
+                    />
 
-                            <h3>How Not To Suck</h3>
+                    <div class="flagship-body">
+                        <span class="show-date">May 22, 2026</span>
 
-                            <span class="show-venue">Tec-Troit Education Series, Detroit</span>
+                        <h3>Official Movement Opening Party</h3>
 
-                            <p class="show-detail">
-                                Public workshop on creative discipline, live hardware, gear decisions, and electronic music development.
-                            </p>
-                        </div>
-                    </article>
+                        <span class="show-venue">
+                            Lincoln Factory · Detroit, MI
+                        </span>
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/past-movement-opening-2026.jpg"
-                            alt="Official Movement Opening Party flyer — Lincoln Factory, Detroit"
-                        />
+                        <p class="show-detail">
+                            Paxahau × Blank Code event with Speedy J,
+                            Drumcell, DJ Hyperactive, and Augustus Williams.
+                        </p>
 
-                        <div class="flagship-body">
-                            <span class="show-date">May 22, 2026</span>
+                        <a
+                            href="https://ra.co/events/2395256"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Details on RA →
+                        </a>
+                    </div>
+                </article>
 
-                            <h3>Official Movement Opening Party</h3>
+                <!-- AUDIATION -->
 
-                            <span class="show-venue">Lincoln Factory, Detroit</span>
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/show-2026-06-20.jpg"
+                        alt="Audiation welcomes Augustus Williams flyer at The Loading Dock in Austin"
+                    />
 
-                            <p class="show-detail">
-                                Paxahau × Blank Code · with Speedy J, Drumcell, DJ Hyperactive.
-                            </p>
+                    <div class="flagship-body">
+                        <span class="show-date">June 20, 2026</span>
 
-                            <a
-                                href="https://ra.co/events/2395256"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Details on RA →
-                            </a>
-                        </div>
-                    </article>
+                        <h3>Audiation Welcomes Augustus Williams</h3>
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/show-2026-06-20.jpg"
-                            alt="Audiation welcomes Augustus Williams flyer — The Loading Dock, Austin, June 20 2026"
-                        />
+                        <span class="show-venue">
+                            The Loading Dock · Austin, TX
+                        </span>
 
-                        <div class="flagship-body">
-                            <span class="show-date">Jun 20, 2026</span>
+                        <p class="show-detail">
+                            Headline performance presented on a
+                            Funktion-One sound system.
+                        </p>
 
-                            <h3>Audiation welcomes Augustus Williams</h3>
+                        <a
+                            href="https://ra.co/events/2341370"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Details on RA →
+                        </a>
+                    </div>
+                </article>
 
-                            <span class="show-venue">The Loading Dock, Austin TX</span>
+                <!-- RHYTHM REEL -->
 
-                            <p class="show-detail">
-                                Headline set · Funktion-One system.
-                            </p>
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/show-2026-06-13-rhythm-reel.jpg"
+                        alt="The Rhythm Reel Black Music on Film event flyer in Detroit"
+                    />
 
-                            <a
-                                href="https://ra.co/events/2341370"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Details on RA →
-                            </a>
-                        </div>
-                    </article>
+                    <div class="flagship-body">
+                        <span class="show-date">June 13, 2026</span>
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/show-2026-06-13-rhythm-reel.jpg"
-                            alt="The Rhythm Reel: Black Music on Film flyer — Campfire Films, Detroit, June 13 2026"
-                        />
+                        <h3>The Rhythm Reel: Black Music on Film</h3>
 
-                        <div class="flagship-body">
-                            <span class="show-date">Jun 13, 2026</span>
+                        <span class="show-venue">
+                            Campfire Films × Roar Brewing Company · Detroit
+                        </span>
 
-                            <h3>The Rhythm Reel: Black Music on Film</h3>
+                        <p class="show-detail">
+                            Outdoor celebration of Black music,
+                            film, performance, and community.
+                        </p>
 
-                            <span class="show-venue">Campfire Films × Roar Brewing Company, Detroit</span>
+                        <a
+                            href="https://www.instagram.com/reel/DZdMC5hNcSe/"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Event Media →
+                        </a>
+                    </div>
+                </article>
 
-                            <p class="show-detail">
-                                Outdoor celebration of Black music, film, and community featuring Augustus Williams.
-                            </p>
+                <!-- OPEN INDEX -->
 
-                            <a
-                                href="https://www.instagram.com/reel/DZdMC5hNcSe/"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Event Media →
-                            </a>
-                        </div>
-                    </article>
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/show-2026-06-06.jpg"
+                        alt="Open Index with Alan Oldham flyer at Northern Lights Lounge in Detroit"
+                    />
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/show-2026-06-06.jpg"
-                            alt="Open Index flyer — Northern Lights Lounge, Detroit, June 6 2026"
-                        />
+                    <div class="flagship-body">
+                        <span class="show-date">June 6, 2026</span>
 
-                        <div class="flagship-body">
-                            <span class="show-date">Jun 6, 2026</span>
+                        <h3>Open Index with Alan Oldham (DJ T-1000)</h3>
 
-                            <h3>Open Index w/ Alan Oldham (DJ T-1000)</h3>
+                        <span class="show-venue">
+                            Northern Lights Lounge · Detroit, MI
+                        </span>
 
-                            <span class="show-venue">Northern Lights Lounge, Detroit</span>
+                        <p class="show-detail">
+                            Augustus Williams opened the indoor room
+                            for the Detroit event.
+                        </p>
 
-                            <p class="show-detail">
-                                Augustus Williams opened the indoor room.
-                            </p>
+                        <a
+                            href="https://ra.co/events/2420386"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Details on RA →
+                        </a>
+                    </div>
+                </article>
 
-                            <a
-                                href="https://ra.co/events/2420386"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Details on RA →
-                            </a>
-                        </div>
-                    </article>
+                <!-- METROPLEX 40 -->
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/past-metroplex-40.jpg"
-                            alt="40 Years of Metroplex Records flyer — Lincoln Factory, Detroit"
-                        />
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/past-metroplex-40.jpg"
+                        alt="40 Years of Metroplex Records event flyer at Lincoln Factory in Detroit"
+                    />
 
-                        <div class="flagship-body">
-                            <span class="show-date">Sep 12, 2025</span>
+                    <div class="flagship-body">
+                        <span class="show-date">September 12, 2025</span>
 
-                            <h3>40 Years of Metroplex Records</h3>
+                        <h3>40 Years of Metroplex Records</h3>
 
-                            <span class="show-venue">Lincoln Factory, Detroit</span>
+                        <span class="show-venue">
+                            Lincoln Factory · Detroit, MI
+                        </span>
 
-                            <p class="show-detail">
-                                On the bill with Juan Atkins, Moodymann, Eddie Fowlkes, and Terrence Dixon.
-                            </p>
+                        <p class="show-detail">
+                            On the bill with Juan Atkins, Moodymann,
+                            Eddie Fowlkes, and Terrence Dixon.
+                        </p>
 
-                            <a
-                                href="https://ra.co/events/2235679"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Details on RA →
-                            </a>
-                        </div>
-                    </article>
+                        <a
+                            href="https://ra.co/events/2235679"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Details on RA →
+                        </a>
+                    </div>
+                </article>
 
-                    <article class="flagship-card">
-                        <img
-                            class="flagship-flyer"
-                            src="assets/past-movement-2025.jpg"
-                            alt="Movement Music Festival 2025 flyer — Hart Plaza, Detroit"
-                        />
+                <!-- MOVEMENT 2025 -->
 
-                        <div class="flagship-body">
-                            <span class="show-date">May 2025</span>
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/past-movement-2025.jpg"
+                        alt="Movement Music Festival 2025 flyer at Hart Plaza in Detroit"
+                    />
 
-                            <h3>Movement Music Festival</h3>
+                    <div class="flagship-body">
+                        <span class="show-date">May 2025</span>
 
-                            <span class="show-venue">Hart Plaza, Detroit</span>
+                        <h3>Movement Music Festival</h3>
 
-                            <p class="show-detail">
-                                25th-anniversary edition of techno's flagship festival.
-                            </p>
+                        <span class="show-venue">
+                            Hart Plaza · Detroit, MI
+                        </span>
 
-                            <a
-                                href="https://ra.co/events/2061680"
-                                class="release-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                Details on RA →
-                            </a>
-                        </div>
-                    </article>
-                </div>
+                        <p class="show-detail">
+                            Performance during the 25th-anniversary
+                            edition of Detroit’s flagship electronic
+                            music festival.
+                        </p>
+
+                        <a
+                            href="https://ra.co/events/2061680"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Details on RA →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- TEC-TROIT -->
+
+                <article class="flagship-card">
+                    <img
+                        class="flagship-flyer"
+                        src="assets/show-2026-06-28-how-not-to-suck.jpg"
+                        alt="How Not To Suck Tec-Troit event flyer in Detroit"
+                    />
+
+                    <div class="flagship-body">
+                        <span class="show-date">June 28, 2026</span>
+
+                        <h3>How Not To Suck</h3>
+
+                        <span class="show-venue">
+                            Tec-Troit · Detroit, MI
+                        </span>
+
+                        <p class="show-detail">
+                            Community presentation examining creative
+                            discipline, live hardware, gear decisions,
+                            and electronic-music development.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ADDITIONAL APPEARANCES -->
+
+            <div class="additional-highlights">
+                <h3 class="additional-highlights-title">
+                    Additional Appearances
+                </h3>
 
                 <div class="highlights-list">
                     <div class="highlight-row">
-                        <span class="highlight-name">Detroit Techno Militia × Techno Snob — HALO Detroit live set</span>
-                        <span class="highlight-years">May 2026</span>
+                        <span class="highlight-name">
+                            Detroit Techno Militia × Techno Snob ·
+                            HALO Detroit live set
+                        </span>
+
+                        <span class="highlight-years">
+                            May 2026
+                        </span>
                     </div>
 
                     <div class="highlight-row">
-                        <span class="highlight-name">Fog 18 — Detroit · RA Pick</span>
-                        <span class="highlight-years">Apr 2026</span>
+                        <span class="highlight-name">
+                            Fog 18 · Detroit · Resident Advisor Pick
+                        </span>
+
+                        <span class="highlight-years">
+                            April 2026
+                        </span>
                     </div>
 
                     <div class="highlight-row">
-                        <span class="highlight-name">Detroit–Berlin Connection in Residence — SPKRBOX</span>
-                        <span class="highlight-years">Apr 2026</span>
+                        <span class="highlight-name">
+                            Detroit–Berlin Connection in Residence ·
+                            SPKRBOX
+                        </span>
+
+                        <span class="highlight-years">
+                            April 2026
+                        </span>
                     </div>
 
                     <div class="highlight-row">
-                        <span class="highlight-name">Space &amp; Time — Chicago · RA Pick, live hardware</span>
-                        <span class="highlight-years">Dec 2025</span>
+                        <span class="highlight-name">
+                            Space &amp; Time · Chicago ·
+                            Resident Advisor Pick · Live hardware
+                        </span>
+
+                        <span class="highlight-years">
+                            December 2025
+                        </span>
                     </div>
 
                     <div class="highlight-row">
-                        <span class="highlight-name">Marble Bar — Detroit, Gusto live</span>
-                        <span class="highlight-years">Dec 2025</span>
+                        <span class="highlight-name">
+                            Marble Bar · Detroit · Gusto live
+                        </span>
+
+                        <span class="highlight-years">
+                            December 2025
+                        </span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+
+        <section class="live-contact">
+            <div class="live-contact-inner">
+                <div class="live-contact-copy">
+                    <h2 class="section-title">
+                        Performance Inquiries
+                    </h2>
+
+                    <p>
+                        For DJ sets, hybrid performances, live hardware,
+                        festivals, clubs, and cultural programming,
+                        contact Augustus Williams directly.
+                    </p>
+                </div>
+
+                <div class="live-contact-action">
+                    <a
+                        href="mailto:gustodetroit@gmail.com"
+                        class="signal-button"
+                    >
+                        gustodetroit@gmail.com
+                    </a>
                 </div>
             </div>
         </section>
@@ -769,23 +1008,44 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
-            <p class="footer-text">© 2026. All rights reserved.</p>
+            <p class="footer-text">
+                Augustus Williams
+                <span class="accent">Detroit, MI</span>
+            </p>
+
+            <p class="footer-text">
+                © Augustus Williams. All rights reserved.
+            </p>
         </div>
     </footer>
 
     <script>
         (function () {
-            var quotes = document.querySelectorAll(".press-quotes .press-quote");
-            if (quotes.length < 2) return;
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const quotes = document.querySelectorAll(
+                ".press-quotes .press-quote"
+            );
 
-            var i = 0;
+            if (quotes.length < 2) {
+                return;
+            }
 
-            setInterval(function () {
-                quotes[i].classList.remove("is-active");
-                i = (i + 1) % quotes.length;
-                quotes[i].classList.add("is-active");
+            if (
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches
+            ) {
+                return;
+            }
+
+            let activeQuoteIndex = 0;
+
+            window.setInterval(function () {
+                quotes[activeQuoteIndex].classList.remove("is-active");
+
+                activeQuoteIndex =
+                    (activeQuoteIndex + 1) % quotes.length;
+
+                quotes[activeQuoteIndex].classList.add("is-active");
             }, 6500);
         })();
     </script>
