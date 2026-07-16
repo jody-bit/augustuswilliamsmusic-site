@@ -5,35 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Augustus Williams — Releases</title>
+
     <meta
         name="description"
-        content="Selected releases, remixes, and label archive entries from Augustus Williams, Detroit techno artist and Metroplex recording artist."
+        content="Selected releases, remixes, and catalog entries from Augustus Williams, a Detroit electronic artist and Metroplex recording artist."
     />
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="manifest" href="site.webmanifest" />
+
     <meta name="theme-color" content="#000000" />
 
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
 
     <style>
+        /* =========================================================
+           RELEASES PAGE
+           ========================================================= */
+
         .releases-page {
             background: var(--bg);
         }
 
-        .site-nav {
+        /* NAVIGATION */
+
+        .releases-page .site-nav {
             position: sticky;
             top: 0;
             z-index: 1000;
             background: rgba(10, 10, 10, 0.96);
             border-bottom: 1px solid rgba(245, 241, 235, 0.12);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .site-nav-inner {
+        .releases-page .site-nav-inner {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0.9rem clamp(1.25rem, 4vw, 3rem);
@@ -43,7 +52,7 @@
             gap: 1rem;
         }
 
-        .site-nav-brand {
+        .releases-page .site-nav-brand {
             font-family: var(--font-mono);
             font-size: 0.82rem;
             letter-spacing: 0.14em;
@@ -52,15 +61,21 @@
             border-bottom: none;
         }
 
-        .site-nav-links {
+        .releases-page .site-nav-brand:hover {
+            color: var(--accent);
+        }
+
+        .releases-page .site-nav-links {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 1rem 1.5rem;
+            margin: 0;
+            padding: 0;
             list-style: none;
         }
 
-        .site-nav-links a {
+        .releases-page .site-nav-links a {
             font-family: var(--font-mono);
             font-size: 0.78rem;
             text-transform: uppercase;
@@ -69,13 +84,16 @@
             border-bottom: none;
         }
 
-        .site-nav-links a:hover,
-        .site-nav-links a[aria-current="page"] {
+        .releases-page .site-nav-links a:hover,
+        .releases-page .site-nav-links a[aria-current="page"] {
             color: var(--accent);
         }
 
-        .releases-banner {
+        /* HERO BANNER */
+
+        .releases-page .releases-banner {
             position: relative;
+            width: 100%;
             max-width: 1400px;
             height: 260px;
             margin: 0 auto;
@@ -84,7 +102,7 @@
             border-bottom: 1px solid rgba(245, 241, 235, 0.12);
         }
 
-        .releases-banner img {
+        .releases-page .releases-banner img {
             display: block;
             width: 100%;
             height: 100%;
@@ -93,26 +111,36 @@
             opacity: 0.78;
         }
 
-        .releases-banner::after {
+        .releases-page .releases-banner::after {
             content: "";
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.66) 34%, rgba(0, 0, 0, 0.24) 66%, rgba(0, 0, 0, 0.3) 100%),
-                linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.38) 100%);
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.86) 0%,
+                    rgba(0, 0, 0, 0.68) 34%,
+                    rgba(0, 0, 0, 0.26) 66%,
+                    rgba(0, 0, 0, 0.32) 100%
+                ),
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.16) 0%,
+                    rgba(0, 0, 0, 0.4) 100%
+                );
             pointer-events: none;
         }
 
-        .releases-banner-content {
+        .releases-page .releases-banner-content {
             position: absolute;
+            z-index: 2;
             left: clamp(1rem, 3vw, 2.25rem);
             right: clamp(1rem, 3vw, 2.25rem);
             bottom: clamp(0.9rem, 2vw, 1.4rem);
-            z-index: 2;
-            max-width: 36rem;
+            max-width: 38rem;
         }
 
-        .releases-kicker {
+        .releases-page .releases-kicker {
             margin: 0 0 0.35rem;
             font-family: var(--font-mono);
             color: var(--gray-light);
@@ -121,7 +149,7 @@
             font-size: 0.72rem;
         }
 
-        .releases-heading {
+        .releases-page .releases-heading {
             margin: 0 0 0.35rem;
             font-size: clamp(1.6rem, 3.2vw, 2.8rem);
             line-height: 0.95;
@@ -129,28 +157,30 @@
             color: var(--fg);
         }
 
-        .releases-heading span {
+        .releases-page .releases-heading span {
             color: var(--accent);
         }
 
-        .releases-copy {
-            max-width: 30rem;
+        .releases-page .releases-copy {
+            max-width: 32rem;
             margin: 0;
             color: rgba(245, 241, 235, 0.88);
             line-height: 1.45;
             font-size: 0.9rem;
         }
 
-        .releases-banner-actions {
+        .releases-page .releases-banner-actions {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 0.75rem 1rem;
-            margin-top: 0.75rem;
+            gap: 1rem 1.5rem;
+            margin-top: 1rem;
         }
 
-        .banner-signal {
-            display: inline-block;
+        .releases-page .banner-primary {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
             padding: 0.65rem 0.9rem;
             border: 1px solid var(--signal-red);
             background: rgba(139, 46, 46, 0.12);
@@ -161,13 +191,16 @@
             letter-spacing: 0.1em;
         }
 
-        .banner-signal:hover {
+        .releases-page .banner-primary:hover {
             background: var(--signal-red);
             color: var(--fg);
             border-bottom-color: transparent;
         }
 
-        .banner-scroll {
+        .releases-page .banner-secondary {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
             font-family: var(--font-mono);
             font-size: 0.74rem;
             color: var(--gray-light);
@@ -176,114 +209,205 @@
             border-bottom: none;
         }
 
-        .banner-scroll:hover {
+        .releases-page .banner-secondary:hover {
             color: var(--accent);
         }
 
-        .releases-section {
+        /* RELEASE CATALOG */
+
+        .releases-page .releases-section {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+            padding:
+                clamp(4rem, 7vw, 6rem)
+                clamp(1.25rem, 4vw, 3rem)
+                clamp(4rem, 8vw, 7rem);
         }
 
+        /* CONTACT STRIP */
+
+        .release-contact {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding:
+                clamp(3.5rem, 7vw, 6rem)
+                clamp(1.25rem, 4vw, 3rem);
+            border-top: 1px solid rgba(245, 241, 235, 0.12);
+            background: var(--gray-dark);
+        }
+
+        .release-contact-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .release-contact-copy {
+            max-width: 650px;
+        }
+
+        .release-contact-copy p {
+            margin-bottom: 0;
+            color: var(--gray-light);
+        }
+
+        .release-contact-action {
+            flex: none;
+        }
+
+        /* RESPONSIVE */
+
         @media (max-width: 900px) {
-            .site-nav-inner {
+            .releases-page .site-nav-inner {
                 align-items: flex-start;
                 flex-direction: column;
             }
 
-            .releases-banner {
+            .releases-page .releases-banner {
                 height: 300px;
             }
 
-            .releases-banner::after {
-                background: linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.78) 100%);
+            .releases-page .releases-banner::after {
+                background:
+                    linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.22) 0%,
+                        rgba(0, 0, 0, 0.8) 100%
+                    );
             }
 
-            .releases-banner-content {
+            .releases-page .releases-banner-content {
                 max-width: none;
+            }
+
+            .release-contact-inner {
+                align-items: flex-start;
+                flex-direction: column;
             }
         }
 
         @media (max-width: 640px) {
-            .site-nav-links {
+            .releases-page .site-nav-links {
                 gap: 0.75rem 1rem;
             }
 
-            .releases-banner {
+            .releases-page .site-nav-links a {
+                font-size: 0.7rem;
+            }
+
+            .releases-page .releases-banner {
                 height: 340px;
             }
 
-            .releases-heading {
+            .releases-page .releases-heading {
                 font-size: clamp(1.35rem, 7vw, 2rem);
             }
 
-            .releases-copy {
-                font-size: 0.88rem;
+            .releases-page .releases-copy {
                 max-width: 24rem;
+                font-size: 0.88rem;
             }
 
-            .releases-banner-actions {
+            .releases-page .releases-banner-actions {
                 align-items: flex-start;
                 flex-direction: column;
-                gap: 0.6rem;
+                gap: 0.9rem;
             }
         }
     </style>
 </head>
 
 <body class="releases-page">
-    <nav class="site-nav" aria-label="Primary">
+    <nav class="site-nav" aria-label="Primary navigation">
         <div class="site-nav-inner">
-            <a href="index.html" class="site-nav-brand">Augustus Williams</a>
+            <a href="index.html" class="site-nav-brand">
+                Augustus Williams
+            </a>
 
             <ul class="site-nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shows.html">Live</a></li>
-                <li><a href="releases.html" aria-current="page">Releases</a></li>
-                <li><a href="field-notes.html">Field Notes</a></li>
-                <li><a href="index.html#about">Bio</a></li>
-                <li><a href="index.html#archive">Archive</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="shows.html">Live</a>
+                </li>
+
+                <li>
+                    <a href="releases.html" aria-current="page">
+                        Releases
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">Bio</a>
+                </li>
+
+                <li>
+                    <a href="index.html#archive">Archive</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">Contact</a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <div class="releases-banner">
+        <!-- ======================================================
+             HERO
+             ====================================================== -->
+
+        <section class="releases-banner">
             <img
                 src="assets/releases-hero-banner-cropped-half-overlay.jpg"
-                alt="Augustus Williams performing live in front of a crowd"
+                alt="Augustus Williams performing electronic music in front of a crowd"
             />
 
             <div class="releases-banner-content">
-                <p class="releases-kicker">Releases / Selected Catalog / Label Archive</p>
+                <p class="releases-kicker">
+                    Releases / Selected Catalog / Label Archive
+                </p>
 
                 <h1 class="releases-heading">
                     Augustus Williams <span>(Gusto)</span>
                 </h1>
 
                 <p class="releases-copy">
-                    Selected catalog entries, remixes, and label archives.
+                    Selected label releases, remixes, tracks,
+                    and catalog entries from the Augustus Williams archive.
                 </p>
 
                 <div class="releases-banner-actions">
-                    <a
-                        href="https://augustus-williams.kit.com/8597e8cab7"
-                        class="banner-signal"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                    >
-                        Join the Detroit Techno Signal
+                    <a href="#releases" class="banner-primary">
+                        Browse Releases
                     </a>
 
-                    <a href="#releases" class="banner-scroll">Browse releases ↓</a>
+                    <a
+                        href="mailto:gustodetroit@gmail.com"
+                        class="banner-secondary"
+                    >
+                        Music Inquiries →
+                    </a>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- ======================================================
+             RELEASE CATALOG
+             ====================================================== -->
 
         <section id="releases" class="releases-section">
-            <div id="featured" class="release-feature-card metroplex-release-card">
+            <!-- METROPLEX FEATURE -->
+
+            <article
+                id="featured"
+                class="release-feature-card metroplex-release-card"
+            >
                 <div class="release-logo-block">
                     <img
                         src="assets/metroplex_logo_offwhite_transparent.png"
@@ -293,12 +417,16 @@
                 </div>
 
                 <div class="release-copy-block">
-                    <h3>INCREASER EP</h3>
+                    <h2>Increaser EP</h2>
 
-                    <p class="release-meta">Augustus Williams · Metroplex Records / 2023</p>
+                    <p class="release-meta">
+                        Augustus Williams · Metroplex Records · 2023
+                    </p>
 
                     <p>
-                        Official Metroplex release featuring The Hook-Up, Dark T, Imagination, and Increaser.
+                        Official Metroplex release featuring
+                        “The Hook-Up,” “Dark T,” “Imagination,”
+                        and “Increaser.”
                     </p>
 
                     <div class="release-actions">
@@ -308,20 +436,25 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <div id="thisis" class="releases-group">
-                <h3 class="releases-subtitle">THISIS</h3>
+            <!-- THISIS CATALOG -->
+
+            <section id="thisis" class="releases-group">
+                <h2 class="releases-subtitle">THISIS</h2>
 
                 <div class="releases-list">
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Outside Systems of Human Presumption</h4>
-                            <span class="release-platform">THISIS · Bandcamp</span>
+                            <h3>Outside Systems of Human Presumption</h3>
+
+                            <span class="release-platform">
+                                THISIS · Bandcamp
+                            </span>
                         </div>
 
                         <a
@@ -330,14 +463,17 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Get Yours</h4>
-                            <span class="release-platform">THISIS · Bandcamp</span>
+                            <h3>Get Yours</h3>
+
+                            <span class="release-platform">
+                                THISIS · Bandcamp
+                            </span>
                         </div>
 
                         <a
@@ -346,14 +482,17 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Sammy the Automated Sharebroker</h4>
-                            <span class="release-platform">THISIS · Bandcamp</span>
+                            <h3>Sammy the Automated Sharebroker</h3>
+
+                            <span class="release-platform">
+                                THISIS · Bandcamp
+                            </span>
                         </div>
 
                         <a
@@ -362,14 +501,22 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Sammy the Automated Sharebroker, Augustus Williams Remix</h4>
-                            <span class="release-platform">THISIS · Bandcamp</span>
+                            <h3>
+                                Sammy the Automated Sharebroker
+                                <span class="release-title-detail">
+                                    Augustus Williams Remix
+                                </span>
+                            </h3>
+
+                            <span class="release-platform">
+                                THISIS · Bandcamp
+                            </span>
                         </div>
 
                         <a
@@ -378,14 +525,22 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Kero — TCKR Concept, Augustus Williams Remix</h4>
-                            <span class="release-platform">THISIS · Bandcamp</span>
+                            <h3>
+                                Kero · TCKR Concept
+                                <span class="release-title-detail">
+                                    Augustus Williams Remix
+                                </span>
+                            </h3>
+
+                            <span class="release-platform">
+                                THISIS · Bandcamp
+                            </span>
                         </div>
 
                         <a
@@ -394,103 +549,200 @@
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            LISTEN ON BANDCAMP →
+                            Listen on Bandcamp →
                         </a>
-                    </div>
+                    </article>
                 </div>
-            </div>
+            </section>
 
-            <div id="beatport" class="releases-group">
-                <h3 class="releases-subtitle">BEATPORT ARCHIVE</h3>
+            <!-- BEATPORT ARCHIVE -->
+
+            <section id="beatport" class="releases-group">
+                <h2 class="releases-subtitle">
+                    Beatport Archive
+                </h2>
 
                 <div class="releases-list">
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Psychosis</h4>
-                            <span class="release-platform">Beatport Archive · Release</span>
+                            <h3>Psychosis</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Release
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/release/psychosis/230810" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW RELEASE →
+                        <a
+                            href="https://www.beatport.com/release/psychosis/230810"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Release →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Jack Your Body</h4>
-                            <span class="release-platform">Beatport Archive · Release</span>
+                            <h3>Jack Your Body</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Release
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/release/jack-your-body/1081951" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW RELEASE →
+                        <a
+                            href="https://www.beatport.com/release/jack-your-body/1081951"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Release →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Sample Sessions</h4>
-                            <span class="release-platform">Beatport Archive · Track</span>
+                            <h3>Sample Sessions</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Track
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/track/sample-sessions/5162207" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW TRACK →
+                        <a
+                            href="https://www.beatport.com/track/sample-sessions/5162207"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Track →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Invalid Memory</h4>
-                            <span class="release-platform">Beatport Archive · Track</span>
+                            <h3>Invalid Memory</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Track
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/track/invalid-memory/5072484" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW TRACK →
+                        <a
+                            href="https://www.beatport.com/track/invalid-memory/5072484"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Track →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Psychological Terror</h4>
-                            <span class="release-platform">Beatport Archive · Track</span>
+                            <h3>Psychological Terror</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Track
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/track/psychological-terror/5141100" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW TRACK →
+                        <a
+                            href="https://www.beatport.com/track/psychological-terror/5141100"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Track →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Black Wolf</h4>
-                            <span class="release-platform">Beatport Archive · Track</span>
+                            <h3>Black Wolf</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Track
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/track/black-wolf/1145940" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW TRACK →
+                        <a
+                            href="https://www.beatport.com/track/black-wolf/1145940"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Track →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>Nite Train</h4>
-                            <span class="release-platform">Beatport Archive · Track</span>
+                            <h3>Nite Train</h3>
+
+                            <span class="release-platform">
+                                Beatport Archive · Track
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/track/nite-train/1462486" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW TRACK →
+                        <a
+                            href="https://www.beatport.com/track/nite-train/1462486"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Track →
                         </a>
-                    </div>
+                    </article>
 
-                    <div class="release-item">
+                    <article class="release-item">
                         <div class="release-info">
-                            <h4>GND</h4>
-                            <span class="release-platform">Beatport Artist Archive · Artist Page</span>
+                            <h3>GND</h3>
+
+                            <span class="release-platform">
+                                Beatport Artist Archive · Artist Page
+                            </span>
                         </div>
 
-                        <a href="https://www.beatport.com/artist/gnd/342854" class="release-link" target="_blank" rel="noreferrer noopener">
-                            VIEW ARCHIVE →
+                        <a
+                            href="https://www.beatport.com/artist/gnd/342854"
+                            class="release-link"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            View Archive →
                         </a>
-                    </div>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+        <!-- ======================================================
+             CONTACT
+             ====================================================== -->
+
+        <section class="release-contact">
+            <div class="release-contact-inner">
+                <div class="release-contact-copy">
+                    <h2 class="section-title">
+                        Music + Release Inquiries
+                    </h2>
+
+                    <p>
+                        For catalog information, label inquiries,
+                        licensing, remixes, and artist contact,
+                        reach Augustus Williams directly.
+                    </p>
+                </div>
+
+                <div class="release-contact-action">
+                    <a
+                        href="mailto:gustodetroit@gmail.com"
+                        class="signal-button"
+                    >
+                        gustodetroit@gmail.com
+                    </a>
                 </div>
             </div>
         </section>
@@ -498,8 +750,14 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Augustus Williams <span class="accent">Detroit, MI</span></p>
-            <p class="footer-text">© 2026. All rights reserved.</p>
+            <p class="footer-text">
+                Augustus Williams
+                <span class="accent">Detroit, MI</span>
+            </p>
+
+            <p class="footer-text">
+                © Augustus Williams. All rights reserved.
+            </p>
         </div>
     </footer>
 </body>
